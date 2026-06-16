@@ -1,23 +1,48 @@
 # 🧮 Mathe des Tages
 
-Jeden Tag automatisch **2 frische Matheaufgaben** (Niveau Klasse 7) – generiert per
+Jeden Tag automatisch **2 frische Matheaufgaben pro Klasse** – generiert per
 OpenAI, verpackt in ein **täglich zufällig wechselndes, witziges Design**.
-Mobile-first, fühlt sich an wie eine App.
+Mobile-first, fühlt sich an wie eine App. Standardmäßig aktiv: **Klasse 6** –
+weitere Klassen sind mit einer Zeile dazuschaltbar.
 
 - 🤖 Eine GitHub-Action läuft **jede Nacht** und erstellt die Aufgaben.
-- 🎨 Jeder Tag bekommt ein **anderes Design** (Farben, Schriften, Deko) – deterministisch aus dem Datum, also pro Tag stabil.
+- 🎓 **Mehrere Klassen** über eine Konfig-Liste – jede Klasse hat eigene Aufgaben, eigenes Design und eigenes Archiv.
+- 🎨 **Die KI denkt sich jeden Tag ein eigenes Design-Thema aus** (Farben, Schriften, Emojis, Titel – z. B. „Weltraum-Picknick", „Dino-Dschungel"). Der Spec wird validiert und in ein robustes Layout gegossen; bei Problemen greift ein zufälliges Fallback-Design.
 - 👀 Lösungen lassen sich per Knopf aufdecken. Wer geschaut hat, sieht oben dauerhaft den Hinweis **„Lösungen heute schon angeschaut"** – gespeichert im Cookie, bleibt auch nach dem Zurückgehen.
 - 📅 Frühere Tage sind über ein kleines Archiv erreichbar.
 
 ## So funktioniert's
 
 ```
-scripts/generate.mjs   → ruft OpenAI auf, baut docs/index.html + docs/archive/<datum>.html
-.github/workflows/daily.yml → Cron jede Nacht: generieren, committen, auf GitHub Pages deployen
-docs/                  → die fertige Website (GitHub Pages)
+scripts/generate.mjs        → ruft OpenAI je Klasse auf, baut die HTML-Seiten
+.github/workflows/daily.yml  → Cron jede Nacht: generieren, committen, auf GitHub Pages deployen
+docs/
+  index.html                 → Wurzel: leitet bei 1 Klasse weiter, zeigt bei mehreren eine Auswahl
+  klasse-6/index.html        → heutige Aufgaben für Klasse 6
+  klasse-6/archive/<datum>.html
+  klasse-7/…                  → (sobald aktiviert)
 ```
 
 Das Skript braucht **keine Abhängigkeiten** (nur Node ≥ 20, nutzt eingebautes `fetch`).
+
+## Klassen verwalten
+
+Alle Klassen stehen oben in `scripts/generate.mjs` in der Liste `GRADES`:
+
+```js
+const GRADES = [
+  { slug: "klasse-6", label: "Klasse 6", entersGrade: 6, enabled: true,  topics: [...] },
+  { slug: "klasse-7", label: "Klasse 7", entersGrade: 7, enabled: false, topics: DEFAULT_TOPICS },
+];
+```
+
+- **Klasse aktivieren:** `enabled: true` setzen.
+- **Neue Klasse hinzufügen:** einen Eintrag ergänzen (`slug`, `label`, `entersGrade`, `topics`).
+  `entersGrade` steuert Niveau und Prompt (es wird Stoff der Klasse `entersGrade + 1` vermieden).
+- **Themen anpassen:** `topics`-Liste der jeweiligen Klasse bearbeiten (oder `DEFAULT_TOPICS` nutzen).
+
+Sobald **mehr als eine** Klasse aktiv ist, wird die Wurzelseite automatisch zur Klassen-Auswahl,
+und jede Klassenseite bekommt oben einen Umschalter.
 
 ## Einrichtung (einmalig)
 
@@ -62,8 +87,11 @@ MDT_DATE=2026-12-24 npm run generate
 
 ## Anpassen
 
-- **Aufgaben-Prompt:** `SYSTEM_PROMPT` in `scripts/generate.mjs`.
-- **Designs erweitern:** Arrays `PALETTES`, `FONT_PAIRS`, `EMOJI_SETS` in `scripts/generate.mjs`.
+- **Aufgaben-Prompt:** `buildSystemPrompt()` in `scripts/generate.mjs`.
+- **Design-Prompt (KI):** `buildDesignPrompt()` in `scripts/generate.mjs` – hier steuerst du Stil/Vorgaben des KI-Designs.
+- **Erlaubte Schriften:** `DISPLAY_FONTS` / `BODY_FONTS` (die KI wählt nur daraus → laden garantiert).
+- **Fallback-Designs erweitern:** Arrays `PALETTES`, `FONT_PAIRS`, `EMOJI_SETS`.
+- **KI-Design abschalten:** Umgebungsvariable `MDT_AI_DESIGN=0` → es wird ein zufälliges Design statt des KI-Designs genutzt.
 - **Uhrzeit:** `cron` in `.github/workflows/daily.yml` (Zeit ist in UTC).
 - **Modell:** Repo-Variable `OPENAI_MODEL` (z. B. `gpt-4o` für höhere Qualität).
 

@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#74ebd5">
-<title>Rechen-Rakete – 2026-06-16</title>
-<meta name="description" content="Mathe des Tages – zwei frische Aufgaben für Klasse 7, jeden Tag neu.">
+<meta name="theme-color" content="#6adf90">
+<title>Karotten-Quest – Klasse 6 – 2026-06-16</title>
+<meta name="description" content="Mathe des Tages für Klasse 6 – zwei frische Aufgaben, jeden Tag neu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Quicksand:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Quicksand:wght@400;600;700&display=swap">
 <style>
   :root{
-    --bg1:#74ebd5; --bg2:#9face6;
-    --card:#fbffff; --ink:#15293a; --accent:#2563eb;
-    --accent2:#06b6d4; --good:#0d9488; --radius:32px;
-    --display:"Baloo 2", system-ui, sans-serif;
+    --bg1:#6adf90; --bg2:#ffcc55;
+    --card:#ff9666; --ink:#2a2a2a; --accent:#ff5733;
+    --accent2:#ffe300; --good:#43a047; --radius:27px;
+    --display:"Bangers", system-ui, sans-serif;
     --body:"Quicksand", system-ui, sans-serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
   body{
-    font-family:var(--body); color:#15293a; min-height:100vh; min-height:100dvh;
-    background: repeating-conic-gradient(from 0deg at 50% 0%, rgba(255,255,255,.08) 0deg 6deg, transparent 6deg 12deg), linear-gradient(215deg, #74ebd5, #9face6); 
+    font-family:var(--body); color:#2a2a2a; min-height:100vh; min-height:100dvh;
+    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,.25) 0 6px, transparent 7px), radial-gradient(circle at 80% 20%, rgba(255,255,255,.2) 0 5px, transparent 6px), radial-gradient(circle at 65% 70%, rgba(255,255,255,.22) 0 7px, transparent 8px), linear-gradient(115deg, #6adf90, #ffcc55); background-size: 180px 180px;
     background-attachment:fixed;
     padding:max(16px, env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom));
     display:flex; flex-direction:column; align-items:center;
@@ -38,11 +38,22 @@
   .seen-banner.show{display:flex}
   .seen-banner .dot{width:10px;height:10px;border-radius:50%;background:var(--good);box-shadow:0 0 0 4px rgba(0,0,0,.06)}
 
+  .grade-switch{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:10px}
+  .grade-link{
+    background:rgba(255,255,255,.2); color:#fff; padding:6px 14px; border-radius:999px;
+    text-decoration:none; font-weight:800; font-size:.82rem; border:1px solid rgba(255,255,255,.35)
+  }
+  .grade-link.active{background:#fff; color:var(--accent2)}
+
   header{text-align:center; color:#fff; margin:6px 0 22px}
   .date-pill{
     display:inline-block; background:rgba(255,255,255,.22); backdrop-filter:blur(6px);
     border:1px solid rgba(255,255,255,.35); color:#fff; font-weight:700;
     padding:6px 14px; border-radius:999px; font-size:.82rem; letter-spacing:.3px;
+  }
+  .class-pill{
+    display:inline-block; margin-left:6px; background:#fff; color:var(--accent2);
+    font-weight:800; padding:6px 12px; border-radius:999px; font-size:.82rem;
   }
   h1{
     font-family:var(--display); font-weight:800; margin:14px 0 6px;
@@ -92,14 +103,13 @@
     border:2px dashed color-mix(in srgb, var(--good) 45%, white);
     animation:pop .35s ease;
   }
-  .solution p{margin:6px 0 0; font-size:1.05rem; line-height:1.5; font-weight:600; white-space:pre-wrap}
+  .solution p{margin:6px 0 0; font-size:1.05rem; line-height:1.5; font-weight:600; white-space:pre-wrap; color:#173a26}
   .sol-tag{
     display:inline-block; font-family:var(--display); font-weight:700; font-size:.8rem;
     color:#fff; background:var(--good); padding:3px 10px; border-radius:999px;
   }
 
   .footer{text-align:center; color:#fff; margin-top:8px; font-size:.82rem; opacity:.9}
-  .footer a{color:#fff; font-weight:800}
   .archive{margin-top:10px}
   .archive summary{cursor:pointer; color:#fff; font-weight:800; opacity:.95}
   .archive ul{list-style:none; padding:0; margin:10px 0 0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
@@ -119,38 +129,40 @@
       <span id="seenText">Lösungen heute schon angeschaut 👀</span>
     </div>
 
+    
+
     <header>
-      <span class="date-pill">Dienstag, 16. Juni 2026</span>
-      <h1>Rechen-Rakete</h1>
-      <p class="hype">Dein tägliches Zahlen-Abenteuer. 🪐</p>
-      <div class="emoji-row">🐼 🍪 🛸 🎪 🧩</div>
+      <span class="date-pill">Dienstag, 16. Juni 2026</span><span class="class-pill">Klasse 6</span>
+      <h1>Karotten-Quest</h1>
+      <p class="hype">Lass uns den Karottenwald erkunden!</p>
+      <div class="emoji-row">🥕 🍄 🐰 🌈 🦄</div>
     </header>
 
     <main>
       
     <article class="card" style="--tilt:-1deg">
-      <div class="card-num"><span class="sticker" style="transform:rotate(-7deg)">🐼</span><span class="num">Aufgabe 1</span></div>
-      <div class="badges"><span class="badge">Schriftliche Subtraktion</span><span class="badge diff-easy">leicht</span></div>
-      <p class="question">Rechne schriftlich: 3198 − 2629 = ?</p>
+      <div class="card-num"><span class="sticker" style="transform:rotate(7deg)">🥕</span><span class="num">Aufgabe 1</span></div>
+      <div class="badges"><span class="badge">Schriftliche Addition</span><span class="badge diff-easy">leicht</span></div>
+      <p class="question">Lisa hat 25 bunte Murmeln und ihr Bruder gibt ihr 17 weitere. Wie viele Murmeln hat Lisa jetzt insgesamt?</p>
       <button class="reveal" data-idx="0" aria-expanded="false">
         <span class="reveal-label">Lösung anzeigen</span>
       </button>
       <div class="solution" id="sol-0" hidden>
         <span class="sol-tag">Lösung</span>
-        <p>3198 − 2629 = 569</p>
+        <p>25 + 17 = 42, also hat Lisa 42 Murmeln.</p>
       </div>
     </article>
 
-    <article class="card" style="--tilt:-1deg">
-      <div class="card-num"><span class="sticker" style="transform:rotate(11deg)">🍪</span><span class="num">Aufgabe 2</span></div>
+    <article class="card" style="--tilt:1.2deg">
+      <div class="card-num"><span class="sticker" style="transform:rotate(13deg)">🍄</span><span class="num">Aufgabe 2</span></div>
       <div class="badges"><span class="badge">Prozentrechnung</span><span class="badge diff-mid">mittel</span></div>
-      <p class="question">Ein Fahrrad kostet 40 €. Im Angebot gibt es 20 % Rabatt. Wie viel sparst du und was kostet das Fahrrad jetzt?</p>
+      <p class="question">In einem Bücherregal stehen 80 Bücher. 25% der Bücher sind Science-Fiction-Romane. Wie viele Science-Fiction-Romane sind im Bücherregal?</p>
       <button class="reveal" data-idx="1" aria-expanded="false">
         <span class="reveal-label">Lösung anzeigen</span>
       </button>
       <div class="solution" id="sol-1" hidden>
         <span class="sol-tag">Lösung</span>
-        <p>Rabatt: 20 % von 40 € = 8 €. Neuer Preis: 40 € − 8 € = 32 €.</p>
+        <p>0,25 * 80 = 20, also gibt es 20 Science-Fiction-Romane.</p>
       </div>
     </article>
     </main>
@@ -167,8 +179,8 @@
 <script>
 (function(){
   var DAY = "2026-06-16";
-  var KEY = "mdt_solutions_seen_" + DAY;
-  var PRAISE = "Stark gemacht! 🎉";
+  var KEY = "mdt_seen_klasse-6_" + DAY;
+  var PRAISE = "Super gemacht! 🥕";
 
   function setCookie(name, val, days){
     var d = new Date();
@@ -185,17 +197,14 @@
   var banner = document.getElementById("seenBanner");
   var seenText = document.getElementById("seenText");
 
-  function markSeen(){
-    setCookie(KEY, "1", 7);
+  function showSeen(){
     banner.classList.add("show");
     seenText.textContent = "Lösungen heute schon angeschaut " + PRAISE;
   }
+  function markSeen(){ setCookie(KEY, "1", 7); showSeen(); }
 
-  // Beim Laden prüfen: hat man heute die Lösungen schon gesehen?
-  if (getCookie(KEY) === "1") {
-    banner.classList.add("show");
-    seenText.textContent = "Lösungen heute schon angeschaut " + PRAISE;
-  }
+  // Beim Laden prüfen: heute die Lösungen schon gesehen?
+  if (getCookie(KEY) === "1") showSeen();
 
   document.querySelectorAll(".reveal").forEach(function(btn){
     btn.addEventListener("click", function(){
