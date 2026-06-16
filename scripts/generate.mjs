@@ -400,6 +400,9 @@ Regeln:
 - Wiederhole Grundrechenarten regelmäßig, auch wenn sie leicht sind.
 - Vermeide zu schwierige Aufgaben, die Stoff der ${grade.entersGrade + 1}. Klasse voraussetzen.
 - Schreibe die Aufgaben klar und ohne lange Erklärungen.
+- LOGIK-PRÜFUNG (sehr wichtig): Aufgabentext, gefragte Größe und Lösung müssen exakt zusammenpassen und logisch widerspruchsfrei sein. Prüfe jede Aufgabe vor der Ausgabe gegen, indem du sie selbst löst – stimmt die Frage mit der Rechnung überein? Wenn nicht, formuliere um. Die Aufgabe muss eine echte Rechnung erfordern (nicht trivial, z. B. „wie viel ist drin" nach dem Einfüllen).
+- Bei Behälter-/Mengenaufgaben unterscheide sauber: „Wie viel passt noch hinein / ist noch frei?" = Gesamtmenge − Inhalt (Restkapazität, freier Platz). „Wie viel ist enthalten / drin?" = die eingefüllte Menge selbst. Verwende GENAU die Formulierung, die zur Rechnung passt – verwechsle „freier Platz" nicht mit „übriges Wasser". Falsch: „Wasserkocher fasst 1,7 l, du füllst 0,75 l ein – wie viel Wasser bleibt übrig?". Richtig: „… wie viel Liter passen noch hinein, bis er voll ist?".
+- Halte Szenarien realistisch und eindeutig (keine Doppeldeutigkeiten, sinnvolle Größen und Einheiten).
 - Gib KEINE Lösungen innerhalb des Aufgabentexts aus.
 - WICHTIG: Jede Aufgabe muss GENAU EIN eindeutiges Endergebnis haben, das ein Kind in ein Eingabefeld tippen kann (eine Zahl, ggf. mit Einheit, oder ein einfacher Bruch). Stelle die Frage so, dass nur EIN Wert gefragt ist – nicht "wie viel sparst du UND was kostet es", sondern frage nur nach einem davon.
 - "answer" enthält NUR dieses Endergebnis (z. B. "351", "3/8", "12,5", "45 €").
