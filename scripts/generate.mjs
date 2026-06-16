@@ -912,7 +912,7 @@ function renderGradePage({ dateIso, dateLong, theme, data, archiveLinks, grade, 
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="${theme.themeColor}">
 <title>Daily Mathe – ${esc(grade.label)} – ${esc(dateIso)}</title>
 <meta name="description" content="Daily Mathe für ${esc(grade.label)} – zwei frische Aufgaben, jeden Tag neu.">
@@ -1459,7 +1459,7 @@ function renderRoot({ dateIso, dateLong, theme, grades }) {
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="${theme.pal.bg[0]}">
 <title>Daily Mathe – Klasse wählen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
