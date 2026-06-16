@@ -3,226 +3,466 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#6adf90">
-<title>Karotten-Quest – Klasse 6 – 2026-06-16</title>
-<meta name="description" content="Mathe des Tages für Klasse 6 – zwei frische Aufgaben, jeden Tag neu.">
+<meta name="theme-color" content="#ffcc00">
+<title>Daily Mathe – Klasse 6 – 2026-06-16</title>
+<meta name="description" content="Daily Mathe für Klasse 6 – zwei frische Aufgaben, jeden Tag neu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Quicksand:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Quicksand:wght@400;600;700&display=swap">
 <style>
+
   :root{
-    --bg1:#6adf90; --bg2:#ffcc55;
-    --card:#ff9666; --ink:#2a2a2a; --accent:#ff5733;
-    --accent2:#ffe300; --good:#43a047; --radius:27px;
-    --display:"Bangers", system-ui, sans-serif;
+    --card:#ffffff; --ink:#333333; --accent:#00bcd4;
+    --accent2:#ff5722; --good:#4caf50; --radius:34px;
+    --display:"Luckiest Guy", system-ui, sans-serif;
     --body:"Quicksand", system-ui, sans-serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
   body{
-    font-family:var(--body); color:#2a2a2a; min-height:100vh; min-height:100dvh;
-    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,.25) 0 6px, transparent 7px), radial-gradient(circle at 80% 20%, rgba(255,255,255,.2) 0 5px, transparent 6px), radial-gradient(circle at 65% 70%, rgba(255,255,255,.22) 0 7px, transparent 8px), linear-gradient(115deg, #6adf90, #ffcc55); background-size: 180px 180px;
-    background-attachment:fixed;
-    padding:max(16px, env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom));
-    display:flex; flex-direction:column; align-items:center;
+    font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55;
+    background: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(231deg, #ffcc00, #ff6699); background-size: 28px 28px, 28px 28px; background-attachment:fixed; position:relative;
+    padding:max(20px, env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
+    display:flex; justify-content:center;
   }
-  .wrap{width:100%; max-width:520px; margin:0 auto}
+  body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(60% 50% at 12% -5%, rgba(255,255,255,.16), transparent 70%),
+      radial-gradient(55% 45% at 105% 105%, rgba(0,0,0,.14), transparent 70%);}
+  .bg-art{position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none}
+  .bg-art svg{width:100%; height:100%; display:block}
+  .app{width:100%; max-width:540px; position:relative; z-index:1}
 
-  .seen-banner{
-    display:none; align-items:center; gap:8px; width:100%;
-    background:rgba(255,255,255,.92); color:#1a1a1a;
-    border-radius:999px; padding:10px 16px; margin-bottom:14px;
-    font-weight:800; font-size:.9rem; box-shadow:0 6px 18px rgba(0,0,0,.18);
-    animation:pop .4s ease;
-  }
-  .seen-banner.show{display:flex}
-  .seen-banner .dot{width:10px;height:10px;border-radius:50%;background:var(--good);box-shadow:0 0 0 4px rgba(0,0,0,.06)}
+  .grade-switch{display:flex; gap:8px; justify-content:center; margin-bottom:18px}
+  .grade-link{background:rgba(255,255,255,.16); color:#fff; padding:8px 16px; border-radius:12px;
+    text-decoration:none; font-weight:700; font-size:.85rem; border:1px solid rgba(255,255,255,.28);
+    backdrop-filter:blur(6px)}
+  .grade-link.is-active{background:#fff; color:var(--accent2)}
 
-  .grade-switch{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:10px}
-  .grade-link{
-    background:rgba(255,255,255,.2); color:#fff; padding:6px 14px; border-radius:999px;
-    text-decoration:none; font-weight:800; font-size:.82rem; border:1px solid rgba(255,255,255,.35)
-  }
-  .grade-link.active{background:#fff; color:var(--accent2)}
+  .app-header{text-align:center; margin:4px 0 24px}
+  .kicker{display:inline-flex; gap:8px; justify-content:center; align-items:center; flex-wrap:wrap; margin-bottom:16px}
+  .kicker__date,.kicker__class{font-size:.76rem; font-weight:800; padding:7px 14px; border-radius:999px}
+  .kicker__date{background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.3); color:#fff; backdrop-filter:blur(6px)}
+  .kicker__class{background:#fff; color:var(--accent2); box-shadow:0 4px 14px rgba(0,0,0,.12)}
+  .app-title{font-family:var(--display); font-weight:800; margin:0 0 8px;
+    font-size:clamp(2.1rem,9vw,3rem); line-height:1.04; color:#fff; letter-spacing:-.5px;
+    text-shadow:0 2px 0 rgba(0,0,0,.08), 0 14px 30px rgba(0,0,0,.22)}
+  .app-tagline{margin:0; color:#fff; opacity:.94; font-weight:600; font-size:1.02rem}
 
-  header{text-align:center; color:#fff; margin:6px 0 22px}
-  .date-pill{
-    display:inline-block; background:rgba(255,255,255,.22); backdrop-filter:blur(6px);
-    border:1px solid rgba(255,255,255,.35); color:#fff; font-weight:700;
-    padding:6px 14px; border-radius:999px; font-size:.82rem; letter-spacing:.3px;
-  }
-  .class-pill{
-    display:inline-block; margin-left:6px; background:#fff; color:var(--accent2);
-    font-weight:800; padding:6px 12px; border-radius:999px; font-size:.82rem;
-  }
-  h1{
-    font-family:var(--display); font-weight:800; margin:14px 0 6px;
-    font-size:clamp(2rem, 9vw, 3rem); line-height:1.02; color:#fff;
-    text-shadow:0 4px 0 rgba(0,0,0,.12), 0 10px 26px rgba(0,0,0,.22);
-  }
-  .hype{color:#fff; opacity:.96; font-weight:700; font-size:1rem; margin:0}
-  .emoji-row{font-size:1.5rem; margin-top:12px; letter-spacing:6px}
+  .streaks{display:flex; gap:12px; justify-content:center; margin-top:20px}
+  .streaks.bump .streak{animation:streakPop .55s ease}
+  .streak{flex:1; max-width:170px; display:flex; flex-direction:column; align-items:center; gap:3px;
+    background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); color:#fff;
+    padding:14px 12px; border-radius:18px; backdrop-filter:blur(8px); box-shadow:0 10px 26px rgba(0,0,0,.16)}
+  .streak__num{font-family:var(--display); font-weight:800; font-size:2rem; line-height:1; display:flex; align-items:center; gap:6px}
+  .streak__num::before{font-size:1.3rem}
+  .streak--days .streak__num::before{content:"🔥"}
+  .streak--perfect .streak__num::before{content:"✅"}
+  .streak__label{font-size:.72rem; font-weight:700; opacity:.95; text-align:center}
+  .streak__best{font-size:.64rem; opacity:.75; margin-top:1px}
+  .freezes{margin:10px 0 0; font-size:.78rem; font-weight:700; color:#fff; opacity:.92; text-align:center}
+  @keyframes streakPop{0%{transform:scale(1)}45%{transform:scale(1.16)}100%{transform:scale(1)}}
 
-  .card{
-    background:var(--card); color:var(--ink); border-radius:var(--radius);
-    padding:20px 18px 18px; margin:0 0 18px;
-    box-shadow:0 18px 36px rgba(0,0,0,.20), 0 2px 0 rgba(0,0,0,.05);
-    transform:rotate(var(--tilt)); position:relative; overflow:hidden;
-  }
-  .card::before{
-    content:""; position:absolute; inset:0 0 auto 0; height:6px;
-    background:linear-gradient(90deg, var(--accent), var(--accent2));
-  }
-  .card-num{display:flex; align-items:center; gap:10px; margin-bottom:8px}
-  .sticker{font-size:2rem; display:inline-block; filter:drop-shadow(0 3px 4px rgba(0,0,0,.2))}
-  .num{font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--accent2)}
-  .badges{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px}
-  .badge{
-    font-size:.72rem; font-weight:800; padding:4px 10px; border-radius:999px;
-    background:color-mix(in srgb, var(--accent) 14%, white); color:var(--accent);
-    text-transform:uppercase; letter-spacing:.4px;
-  }
-  .diff-easy{background:color-mix(in srgb, var(--good) 16%, white); color:var(--good)}
-  .diff-mid{background:#fff2d6; color:#b45309}
-  .diff-hard{background:#ffe0e0; color:#c0264a}
-  .question{font-size:1.18rem; line-height:1.5; font-weight:600; margin:4px 0 16px; white-space:pre-wrap}
+  .tasks{display:grid; gap:18px}
+  .task{position:relative; overflow:hidden; background:var(--card); color:var(--ink);
+    border-radius:var(--radius); padding:22px 20px 20px;
+    box-shadow:0 18px 40px rgba(12,17,40,.22); border:1px solid rgba(255,255,255,.6)}
+  .task::before{content:""; position:absolute; inset:0 0 auto 0; height:6px;
+    background:linear-gradient(90deg, var(--accent), var(--accent2))}
+  .task__head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:14px}
+  .task__index{font-family:var(--display); font-weight:800; font-size:.82rem; color:var(--accent2);
+    letter-spacing:.6px; text-transform:uppercase}
+  .task__tags{display:flex; flex-wrap:wrap; gap:6px; justify-content:flex-end}
+  .tag{font-size:.7rem; font-weight:800; padding:5px 11px; border-radius:999px;
+    background:color-mix(in srgb, var(--accent) 14%, white); color:var(--accent)}
+  .tag--easy{background:color-mix(in srgb, var(--good) 18%, white); color:var(--good)}
+  .tag--mid{background:#fff1d6; color:#b45309}
+  .tag--hard{background:#ffe0e6; color:#be123c}
+  .task__question{font-size:1.18rem; font-weight:600; margin:0 0 16px; white-space:pre-wrap; line-height:1.5}
 
-  .reveal{
-    width:100%; border:none; cursor:pointer; font-family:var(--display);
-    font-weight:700; font-size:1rem; color:#fff; padding:13px 16px; border-radius:14px;
+  .answer{display:flex; gap:10px; margin-top:4px; flex-wrap:wrap}
+  .answer__input{flex:1; min-width:140px; font-family:var(--body); font-weight:700; font-size:1.08rem;
+    color:var(--ink); padding:13px 15px; border-radius:13px;
+    border:2px solid color-mix(in srgb, var(--ink) 16%, white);
+    background:color-mix(in srgb, var(--ink) 4%, white); transition:border-color .15s, box-shadow .15s}
+  .answer__input::placeholder{color:color-mix(in srgb, var(--ink) 45%, white)}
+  .answer__input:focus{outline:none; border-color:var(--accent);
+    box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent)}
+  .answer__input.is-correct{border-color:var(--good); background:color-mix(in srgb, var(--good) 12%, white)}
+  .answer__input.is-wrong{border-color:#e11d48; background:#fff0f3}
+  .answer__check{flex:0 0 auto; min-height:50px; border:0; cursor:pointer; font-family:var(--display);
+    font-weight:700; font-size:1rem; color:#fff; padding:13px 22px; border-radius:13px;
     background:linear-gradient(135deg, var(--accent), var(--accent2));
-    box-shadow:0 8px 18px color-mix(in srgb, var(--accent) 40%, transparent);
-    transition:transform .12s ease, filter .12s ease;
-  }
-  .reveal:active{transform:scale(.97)}
-  .reveal.open{filter:saturate(.7) brightness(.95)}
+    box-shadow:0 10px 22px color-mix(in srgb, var(--accent) 38%, transparent);
+    transition:transform .12s ease, filter .12s ease}
+  .answer__check:active{transform:scale(.97)}
+  .answer__check:disabled{filter:grayscale(.5) brightness(.95); cursor:default; box-shadow:none}
 
-  .solution{
-    margin-top:14px; padding:14px 16px; border-radius:14px;
-    background:color-mix(in srgb, var(--good) 10%, white);
-    border:2px dashed color-mix(in srgb, var(--good) 45%, white);
-    animation:pop .35s ease;
-  }
-  .solution p{margin:6px 0 0; font-size:1.05rem; line-height:1.5; font-weight:600; white-space:pre-wrap; color:#173a26}
-  .sol-tag{
-    display:inline-block; font-family:var(--display); font-weight:700; font-size:.8rem;
-    color:#fff; background:var(--good); padding:3px 10px; border-radius:999px;
-  }
+  .attempt{margin:14px 0 0; font-family:var(--display); font-weight:800; font-size:1.1rem;
+    display:flex; align-items:center; gap:8px}
+  .attempt--retry{color:#b45309}
+  .attempt--correct{color:var(--good)}
+  .attempt--revealed{color:#e11d48}
 
-  .footer{text-align:center; color:#fff; margin-top:8px; font-size:.82rem; opacity:.9}
-  .archive{margin-top:10px}
-  .archive summary{cursor:pointer; color:#fff; font-weight:800; opacity:.95}
-  .archive ul{list-style:none; padding:0; margin:10px 0 0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
-  .archive a{
-    background:rgba(255,255,255,.2); color:#fff; padding:6px 12px; border-radius:999px;
-    text-decoration:none; font-weight:700; font-size:.8rem; border:1px solid rgba(255,255,255,.3)
-  }
+  .hint-toggle{margin-top:12px; display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+    font-family:var(--body); font-weight:700; font-size:.85rem; color:var(--accent2);
+    background:color-mix(in srgb, var(--accent2) 10%, white);
+    border:1px solid color-mix(in srgb, var(--accent2) 22%, white);
+    padding:8px 14px; border-radius:999px; transition:transform .12s ease, background .12s ease}
+  .hint-toggle:hover{background:color-mix(in srgb, var(--accent2) 16%, white)}
+  .hint-toggle:active{transform:scale(.97)}
+  .hint{margin-top:12px; padding:13px 15px; border-radius:13px;
+    background:#fff7e6; border:1px solid #f4c97a}
+  .hint__label{display:inline-block; font-weight:800; font-size:.66rem; text-transform:uppercase;
+    letter-spacing:.6px; color:#fff; background:#f59e0b; padding:4px 11px; border-radius:999px}
+  .hint__text{margin:8px 0 0; font-size:1rem; font-weight:600; white-space:pre-wrap; color:#7a4a06}
 
-  @keyframes pop{from{opacity:0; transform:translateY(8px) scale(.98)} to{opacity:1; transform:none}}
-  @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important}}
+  .solution{margin-top:14px; padding:15px 16px; border-radius:14px;
+    background:color-mix(in srgb, var(--good) 12%, white);
+    border:1px solid color-mix(in srgb, var(--good) 30%, white)}
+  .solution__label{display:inline-block; font-weight:800; font-size:.68rem; text-transform:uppercase;
+    letter-spacing:.6px; color:#fff; background:var(--good); padding:4px 11px; border-radius:999px}
+  .solution__text{margin:9px 0 0; font-size:1.04rem; font-weight:600; white-space:pre-wrap; color:#11331f}
+
+  .app-footer{text-align:center; color:#fff; margin-top:26px; font-size:.82rem}
+  .archive__summary{cursor:pointer; font-weight:700; opacity:.92}
+  .archive__list{list-style:none; padding:0; margin:14px 0 0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
+  .archive__link{background:rgba(255,255,255,.16); color:#fff; padding:7px 13px; border-radius:999px;
+    text-decoration:none; font-weight:700; font-size:.78rem; border:1px solid rgba(255,255,255,.26)}
+  .app-credit{margin-top:16px; opacity:.84}
+  .legal-links{margin:8px 0 0; opacity:.82}
+  .legal-links a{color:#fff; text-decoration:underline; font-weight:700}
+
+  .emoji-row{display:none; gap:6px; justify-content:center; margin-top:12px; font-size:1.5rem; letter-spacing:4px}
+  .task__sticker{display:none}
+
+  @media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
+  
+  .emoji-row{display:flex}
+  .task__head{gap:8px}
+  .task__sticker{display:inline-block; font-size:1.5rem; filter:drop-shadow(0 3px 3px rgba(0,0,0,.18))}
+  .app-title{font-size:clamp(2.3rem,10vw,3.2rem)}
+  .task{border-radius:30px; box-shadow:0 22px 46px rgba(12,17,40,.26)}
+  .task:nth-of-type(odd){transform:rotate(-1deg)}
+  .task:nth-of-type(even){transform:rotate(1deg)}
+  .task::before{height:8px}
+  .tag,.kicker__date,.kicker__class{border-radius:999px}
+  .answer__input,.answer__check{border-radius:999px}
+  .streak{border-radius:22px}
+  
 </style>
+<style>[hidden]{display:none !important}</style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="seen-banner" id="seenBanner">
-      <span class="dot"></span>
-      <span id="seenText">Lösungen heute schon angeschaut 👀</span>
-    </div>
-
-    
-
-    <header>
-      <span class="date-pill">Dienstag, 16. Juni 2026</span><span class="class-pill">Klasse 6</span>
-      <h1>Karotten-Quest</h1>
-      <p class="hype">Lass uns den Karottenwald erkunden!</p>
-      <div class="emoji-row">🥕 🍄 🐰 🌈 🦄</div>
+  <div class="bg-art" aria-hidden="true"><svg preserveAspectRatio="xMidYMid slice" viewBox='0 0 800 600' xmlns='http://www.w3.org/2000/svg'><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:#ffcc00;stop-opacity:1' /><stop offset='100%' style='stop-color:#ff6699;stop-opacity:1' /></linearGradient></defs><rect width='100%' height='100%' fill='url(#grad1)'/><circle cx='200' cy='400' r='100' fill='#00bcd4' opacity='0.5'/><circle cx='600' cy='200' r='120' fill='#ff5722' opacity='0.4'/><ellipse cx='400' cy='500' rx='150' ry='80' fill='#fff' opacity='0.3'/></svg></div>
+  <div class="app">
+    <header class="app-header">
+      
+      <div class="kicker">
+        <span class="kicker__date">Dienstag, 16. Juni 2026</span>
+        <span class="kicker__class">Klasse 6</span>
+      </div>
+      <h1 class="app-title">Daily Mathe</h1>
+      <div class="emoji-row">🦊 🍕 🌈 🎲 🧠</div>
+      <div class="streaks">
+        <div class="streak streak--days" id="streak-done">
+          <span class="streak__num">0</span>
+          <span class="streak__label">Tage am Stück</span>
+          <span class="streak__best"></span>
+        </div>
+        <div class="streak streak--perfect" id="streak-perfect">
+          <span class="streak__num">0</span>
+          <span class="streak__label">Tage alles richtig</span>
+          <span class="streak__best"></span>
+        </div>
+      </div>
+      <p class="freezes" id="freezes" hidden></p>
     </header>
 
-    <main>
+    <main class="tasks">
       
-    <article class="card" style="--tilt:-1deg">
-      <div class="card-num"><span class="sticker" style="transform:rotate(7deg)">🥕</span><span class="num">Aufgabe 1</span></div>
-      <div class="badges"><span class="badge">Schriftliche Addition</span><span class="badge diff-easy">leicht</span></div>
-      <p class="question">Lisa hat 25 bunte Murmeln und ihr Bruder gibt ihr 17 weitere. Wie viele Murmeln hat Lisa jetzt insgesamt?</p>
-      <button class="reveal" data-idx="0" aria-expanded="false">
-        <span class="reveal-label">Lösung anzeigen</span>
-      </button>
-      <div class="solution" id="sol-0" hidden>
-        <span class="sol-tag">Lösung</span>
-        <p>25 + 17 = 42, also hat Lisa 42 Murmeln.</p>
+    <article class="task">
+      <div class="task__head">
+        <span class="task__sticker">🦊</span>
+        <span class="task__index">Aufgabe 1</span>
+        <div class="task__tags"><span class="tag">Schriftliche Addition</span><span class="tag tag--mid">mittel</span></div>
+      </div>
+      <p class="task__question">Rechne schriftlich: 125,8 + 47,6</p>
+      <form class="answer" data-idx="0">
+        <input class="answer__input" id="answer-0" type="text" inputmode="text"
+          autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
+        <button class="answer__check" type="submit" data-idx="0">Prüfen</button>
+      </form>
+      <button type="button" class="hint-toggle" id="hinttoggle-0" data-idx="0">💡 Tipp anzeigen</button>
+      <p class="attempt" id="attempt-0" hidden></p>
+      <div class="hint" id="hint-0" hidden>
+        <span class="hint__label">Tipp</span>
+        <p class="hint__text">Tipp: Schreibe die Zahlen untereinander. Achte darauf, die Kommas richtig auszurichten!</p>
+      </div>
+      <div class="solution" id="solution-0" hidden>
+        <span class="solution__label">Lösung</span>
+        <p class="solution__text">  125,8
++  47,6
+-----
+  173,4</p>
       </div>
     </article>
 
-    <article class="card" style="--tilt:1.2deg">
-      <div class="card-num"><span class="sticker" style="transform:rotate(13deg)">🍄</span><span class="num">Aufgabe 2</span></div>
-      <div class="badges"><span class="badge">Prozentrechnung</span><span class="badge diff-mid">mittel</span></div>
-      <p class="question">In einem Bücherregal stehen 80 Bücher. 25% der Bücher sind Science-Fiction-Romane. Wie viele Science-Fiction-Romane sind im Bücherregal?</p>
-      <button class="reveal" data-idx="1" aria-expanded="false">
-        <span class="reveal-label">Lösung anzeigen</span>
-      </button>
-      <div class="solution" id="sol-1" hidden>
-        <span class="sol-tag">Lösung</span>
-        <p>0,25 * 80 = 20, also gibt es 20 Science-Fiction-Romane.</p>
+    <article class="task">
+      <div class="task__head">
+        <span class="task__sticker">🍕</span>
+        <span class="task__index">Aufgabe 2</span>
+        <div class="task__tags"><span class="tag">Sachaufgabe</span><span class="tag tag--easy">leicht</span></div>
+      </div>
+      <p class="task__question">Ein Supermarkt verkauft Äpfel für 2,50 € das Kilogramm. Wie viel kosten 3,2 kg Äpfel?</p>
+      <form class="answer" data-idx="1">
+        <input class="answer__input" id="answer-1" type="text" inputmode="text"
+          autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
+        <button class="answer__check" type="submit" data-idx="1">Prüfen</button>
+      </form>
+      <button type="button" class="hint-toggle" id="hinttoggle-1" data-idx="1">💡 Tipp anzeigen</button>
+      <p class="attempt" id="attempt-1" hidden></p>
+      <div class="hint" id="hint-1" hidden>
+        <span class="hint__label">Tipp</span>
+        <p class="hint__text">Tipp: Multipliziere einfach 3,2 mit 2,50. Rechne erst ohne das Komma!</p>
+      </div>
+      <div class="solution" id="solution-1" hidden>
+        <span class="solution__label">Lösung</span>
+        <p class="solution__text">3,2 × 2,50 = 8,00</p>
       </div>
     </article>
     </main>
 
-    <div class="footer">
+    <footer class="app-footer">
       <details class="archive">
-        <summary>Frühere Tage 📅</summary>
-        <ul><li style="color:#fff;opacity:.8;list-style:none">Noch kein Archiv 🐣</li></ul>
+        <summary class="archive__summary">Frühere Tage</summary>
+        <ul class="archive__list"><li style="color:#fff;opacity:.8;list-style:none">Noch kein Archiv 🐣</li></ul>
       </details>
-      <p style="margin-top:14px">Jeden Tag neu · automatisch erstellt 🤖</p>
-    </div>
+      <p class="app-credit">Jeden Tag neu · automatisch erstellt 🤖</p>
+      <p class="legal-links"><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></p>
+    </footer>
   </div>
 
 <script>
 (function(){
   var DAY = "2026-06-16";
-  var KEY = "mdt_seen_klasse-6_" + DAY;
-  var PRAISE = "Super gemacht! 🥕";
+  var SLUG = "klasse-6";
+  var TASKS = [{"answer":"173,4","accept":[]},{"answer":"8,00","accept":["8 €"]}];
+  var PKEY = "mdt_progress_" + SLUG;
+  var MAX_ATTEMPTS = 2;     // ein erster Versuch + ein zweiter nach dem Tipp
+  var FREEZE_CAP = 3;       // max. gleichzeitig gehortete Gnadentage
+  var FREEZE_START = 2;     // Gnadentage zu Beginn
+  var FREEZE_EVERY = 7;     // alle 7 Tage am Stück gibt es einen Gnadentag dazu
 
-  function setCookie(name, val, days){
-    var d = new Date();
-    d.setTime(d.getTime() + days*24*60*60*1000);
-    document.cookie = name + "=" + val + ";expires=" + d.toUTCString() + ";path=/;SameSite=Lax";
+  // ---- Speicher (localStorage) ----
+  function load(){ try { return JSON.parse(localStorage.getItem(PKEY)) || {}; } catch(e){ return {}; } }
+  function save(){ try { localStorage.setItem(PKEY, JSON.stringify(store)); } catch(e){} }
+  function prevDay(iso){ var d = new Date(iso + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - 1); return d.toISOString().slice(0,10); }
+  function dayDiff(a, b){ return Math.round((new Date(b + "T12:00:00Z") - new Date(a + "T12:00:00Z")) / 864e5); }
+
+  var store = load();
+  store.days = store.days || {};
+  if (store.freezes == null) store.freezes = FREEZE_START;
+  // alte Tage (älter als ~120) ausdünnen, damit der Speicher klein bleibt
+  var keep = {}; var minDay = prevDay(DAY);
+  for (var k = 0; k < 120; k++) minDay = prevDay(minDay);
+  Object.keys(store.days).forEach(function(d){ if (d >= minDay) keep[d] = store.days[d]; });
+  store.days = keep;
+  // Tages-Status: pro Aufgabe { status:"open|solved|revealed", attempts, input }
+  var today = store.days[DAY];
+  if (!today || !today.t) { today = { t: TASKS.map(function(){ return { status:"open", attempts:0, input:"" }; }), counted:false }; }
+  store.days[DAY] = today;
+
+  // ---- Antwort-Prüfung (tolerant) ----
+  function normStr(s){ return ("" + s).toLowerCase().replace(/\s+/g, "").replace(/,/g, "."); }
+  function toNum(s){
+    var raw = ("" + s).toLowerCase().replace(/,/g, ".").trim();
+    var mix = raw.match(/^(-?\d+)\s+(\d+)\/(\d+)$/); // gemischte Zahl "1 5/12"
+    if (mix){ var w = parseFloat(mix[1]); var sg = w < 0 ? -1 : 1; return w + sg * parseFloat(mix[2]) / parseFloat(mix[3]); }
+    var t = raw.replace(/\s+/g, "");
+    var fr = t.match(/-?\d+(?:\.\d+)?\/-?\d+(?:\.\d+)?/);
+    if (fr){ var p = fr[0].split("/"); return parseFloat(p[0]) / parseFloat(p[1]); }
+    var n = t.match(/-?\d+(?:\.\d+)?/);
+    return n ? parseFloat(n[0]) : NaN;
   }
-  function getCookie(name){
-    return document.cookie.split("; ").reduce(function(acc, c){
-      var p = c.split("=");
-      return p[0] === name ? decodeURIComponent(p.slice(1).join("=")) : acc;
-    }, "");
+  function matches(input, task){
+    var cands = [task.answer].concat(task.accept || []);
+    for (var i = 0; i < cands.length; i++){
+      var c = cands[i];
+      if (normStr(input) === normStr(c)) return true;
+      var a = toNum(input), b = toNum(c);
+      if (!isNaN(a) && !isNaN(b) && Math.abs(a - b) < 1e-6) return true;
+    }
+    return false;
   }
 
-  var banner = document.getElementById("seenBanner");
-  var seenText = document.getElementById("seenText");
-
-  function showSeen(){
-    banner.classList.add("show");
-    seenText.textContent = "Lösungen heute schon angeschaut " + PRAISE;
+  // ---- Streaks + Gnadentage anzeigen ----
+  // Lebt der Streak (gestern erledigt) ODER lässt er sich noch mit Gnadentagen retten?
+  function savable(lastDate){
+    if (!lastDate) return false;
+    if (lastDate === DAY) return true;
+    var missed = dayDiff(lastDate, DAY) - 1;
+    if (missed <= 0) return true;
+    return (store.freezes || 0) >= missed;
   }
-  function markSeen(){ setCookie(KEY, "1", 7); showSeen(); }
+  function setStreak(id, val, best){
+    var el = document.getElementById(id); if (!el) return;
+    el.querySelector(".streak__num").textContent = val;
+    var b = el.querySelector(".streak__best");
+    if (b) b.textContent = best ? ("Rekord: " + best) : "";
+  }
+  function renderStreaks(){
+    setStreak("streak-done", savable(store.lastDoneDate) ? (store.doneStreak || 0) : 0, store.doneBest || 0);
+    setStreak("streak-perfect", savable(store.lastPerfectDate) ? (store.perfectStreak || 0) : 0, store.perfectBest || 0);
+    var fz = document.getElementById("freezes");
+    if (fz){
+      var n = store.freezes || 0;
+      fz.hidden = false;
+      fz.textContent = "❄️ " + n + " " + (n === 1 ? "Gnadentag" : "Gnadentage") + " übrig";
+    }
+  }
 
-  // Beim Laden prüfen: heute die Lösungen schon gesehen?
-  if (getCookie(KEY) === "1") showSeen();
+  // ---- Darstellung pro Aufgabe ----
+  function setAttempt(i, kind, text){
+    var el = document.getElementById("attempt-" + i); if (!el) return;
+    el.hidden = false;
+    el.className = "attempt attempt--" + kind;
+    el.textContent = text;
+  }
+  function lockTask(i){
+    var inp = document.getElementById("answer-" + i);
+    var btn = document.querySelector('.answer__check[data-idx="' + i + '"]');
+    if (inp) inp.disabled = true;
+    if (btn) btn.disabled = true;
+  }
+  function showSolution(i){ var s = document.getElementById("solution-" + i); if (s) s.hidden = false; }
+  function hideHintToggle(i){ var t = document.getElementById("hinttoggle-" + i); if (t) t.hidden = true; }
+  function showHint(i){
+    var h = document.getElementById("hint-" + i); if (h) h.hidden = false;
+    hideHintToggle(i);
+  }
 
-  document.querySelectorAll(".reveal").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      var idx = btn.getAttribute("data-idx");
-      var sol = document.getElementById("sol-" + idx);
-      var open = !sol.hidden;
-      if (open){
-        sol.hidden = true;
-        btn.classList.remove("open");
-        btn.setAttribute("aria-expanded", "false");
-        btn.querySelector(".reveal-label").textContent = "Lösung anzeigen";
-      } else {
-        sol.hidden = false;
-        btn.classList.add("open");
-        btn.setAttribute("aria-expanded", "true");
-        btn.querySelector(".reveal-label").textContent = "Lösung verstecken";
-        markSeen();
+  // Stellt den gespeicherten Zustand einer Aufgabe wieder her bzw. zeigt das Ergebnis.
+  function renderTask(i){
+    var st = today.t[i];
+    var inp = document.getElementById("answer-" + i);
+    var btn = document.querySelector('.answer__check[data-idx="' + i + '"]');
+    if (inp) inp.value = st.input || "";
+    if (st.hintShown) showHint(i);
+    if (st.status === "solved"){
+      if (inp) inp.classList.add("is-correct");
+      setAttempt(i, "correct", st.attempts > 1 ? "Richtig – im zweiten Versuch! 💪" : "Richtig! 🎉");
+      showSolution(i); lockTask(i); hideHintToggle(i);
+    } else if (st.status === "revealed"){
+      if (inp) inp.classList.add("is-wrong");
+      setAttempt(i, "revealed", "Schau dir den Lösungsweg an – beim nächsten Mal klappt's! 🌱");
+      showSolution(i); lockTask(i); hideHintToggle(i);
+    } else if (st.attempts === 1){
+      // erster Versuch war falsch, zweiter steht noch aus
+      if (inp){ inp.classList.add("is-wrong"); }
+      setAttempt(i, "retry", "Noch nicht ganz – schau dir den Tipp an und versuch's nochmal. 💪");
+      showHint(i); st.hintShown = true;
+      if (btn) btn.textContent = "Nochmal prüfen";
+    }
+  }
+
+  // ---- Tag abschließen (Streaks + Gnadentage), wenn alle Aufgaben fertig sind ----
+  function tasksAllResolved(){ return today.t.every(function(s){ return s.status === "solved" || s.status === "revealed"; }); }
+  function tasksAllPerfect(){ return today.t.every(function(s){ return s.status === "solved"; }); }
+
+  function completeDayIfReady(){
+    if (today.counted || !tasksAllResolved()) return;
+    today.counted = true;
+
+    var prevDone = store.lastDoneDate;
+    var prevPerfectDate = store.lastPerfectDate;
+    // Lücke prüfen und ggf. mit Gnadentagen überbrücken
+    var gapForgiven = true, used = 0;
+    if (prevDone){
+      var missed = dayDiff(prevDone, DAY) - 1;
+      if (missed > 0){
+        if ((store.freezes || 0) >= missed){ used = missed; gapForgiven = true; }
+        else gapForgiven = false;
       }
+    }
+    store.freezes = Math.max(0, (store.freezes || 0) - used);
+
+    // "Tage am Stück"
+    store.doneStreak = gapForgiven ? (store.doneStreak || 0) + 1 : 1;
+    store.lastDoneDate = DAY;
+    store.doneBest = Math.max(store.doneBest || 0, store.doneStreak);
+
+    // "Tage alles richtig" – 2. Versuch zählt; nur ein aufgedeckter Tag bricht ihn
+    if (tasksAllPerfect()){
+      var perfectChain = gapForgiven && prevPerfectDate === prevDone; // Vortag war auch perfekt
+      store.perfectStreak = perfectChain ? (store.perfectStreak || 0) + 1 : 1;
+      store.lastPerfectDate = DAY;
+      store.perfectBest = Math.max(store.perfectBest || 0, store.perfectStreak);
+    } else {
+      store.perfectStreak = 0;
+    }
+
+    // Gnadentag verdienen (alle 7 Tage am Stück), gedeckelt
+    if (store.doneStreak % FREEZE_EVERY === 0) store.freezes = Math.min(FREEZE_CAP, (store.freezes || 0) + 1);
+
+    save();
+    renderStreaks();
+    var bar = document.querySelector(".streaks"); if (bar) bar.classList.add("bump");
+  }
+
+  // ---- Eine Antwort verarbeiten (Tipp + zweiter Versuch) ----
+  function submitAnswer(i, value){
+    var st = today.t[i];
+    if (st.status !== "open") return;
+    st.input = value;
+    st.attempts += 1;
+    var correct = matches(value, TASKS[i]);
+
+    if (correct){
+      st.status = "solved";
+      var inp = document.getElementById("answer-" + i);
+      if (inp) inp.classList.remove("is-wrong");
+      renderTask(i);
+    } else if (st.attempts < MAX_ATTEMPTS){
+      // erster Fehlversuch -> Tipp + zweiter Versuch, noch KEIN Tagesabschluss
+      var inp2 = document.getElementById("answer-" + i);
+      if (inp2){ inp2.classList.add("is-wrong"); inp2.focus(); inp2.select && inp2.select(); }
+      setAttempt(i, "retry", "Noch nicht ganz – schau dir den Tipp an und versuch's nochmal. 💪");
+      showHint(i); st.hintShown = true;
+      var btn = document.querySelector('.answer__check[data-idx="' + i + '"]');
+      if (btn) btn.textContent = "Nochmal prüfen";
+    } else {
+      // zweiter Fehlversuch -> Lösung zeigen
+      st.status = "revealed";
+      renderTask(i);
+    }
+    save();
+    completeDayIfReady();
+  }
+
+  // ---- Heutigen Stand wiederherstellen ----
+  TASKS.forEach(function(t, i){ renderTask(i); });
+  renderStreaks();
+
+  // ---- Formulare verdrahten ----
+  document.querySelectorAll(".answer").forEach(function(form){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var i = +form.getAttribute("data-idx");
+      var inp = document.getElementById("answer-" + i);
+      var val = (inp.value || "").trim();
+      if (!val){ inp.focus(); return; }
+      submitAnswer(i, val);
+    });
+  });
+
+  // ---- "Tipp anzeigen" freiwillig (kostet den Streak nicht) ----
+  document.querySelectorAll(".hint-toggle").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var i = +btn.getAttribute("data-idx");
+      today.t[i].hintShown = true;
+      showHint(i);
+      save();
     });
   });
 })();

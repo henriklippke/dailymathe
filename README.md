@@ -1,14 +1,16 @@
 # 🧮 Mathe des Tages
 
 Jeden Tag automatisch **2 frische Matheaufgaben pro Klasse** – generiert per
-OpenAI, verpackt in ein **täglich zufällig wechselndes, witziges Design**.
-Mobile-first, fühlt sich an wie eine App. Standardmäßig aktiv: **Klasse 6** –
+OpenAI, verpackt in ein **täglich neu von der KI gestaltetes, modernes Design**.
+Mobile-first, fühlt sich an wie eine echte App. Standardmäßig aktiv: **Klasse 6** –
 weitere Klassen sind mit einer Zeile dazuschaltbar.
 
 - 🤖 Eine GitHub-Action läuft **jede Nacht** und erstellt die Aufgaben.
 - 🎓 **Mehrere Klassen** über eine Konfig-Liste – jede Klasse hat eigene Aufgaben, eigenes Design und eigenes Archiv.
-- 🎨 **Die KI denkt sich jeden Tag ein eigenes Design-Thema aus** (Farben, Schriften, Emojis, Titel – z. B. „Weltraum-Picknick", „Dino-Dschungel"). Der Spec wird validiert und in ein robustes Layout gegossen; bei Problemen greift ein zufälliges Fallback-Design.
-- 👀 Lösungen lassen sich per Knopf aufdecken. Wer geschaut hat, sieht oben dauerhaft den Hinweis **„Lösungen heute schon angeschaut"** – gespeichert im Cookie, bleibt auch nach dem Zurückgehen.
+- 🎨 **Jeden Tag eine neue Optik:** Fester Titel „Daily Mathe" (keine wechselnden Sprüche). Die Kreativität steckt im **Hintergrund** – die KI baut täglich einen anderen (mehrlagige CSS-Verläufe/Mesh, ~⅓ der Tage ein **abstraktes SVG**) – plus wechselnde Farbwelt, Schriften und einen von mehreren polierten Layout-Stilen (`soft`, `playful`, `bold`/Neobrutalismus, `minimal`, `editorial`). Stil & Hintergrundtyp werden pro Tag fest gewürfelt; Layout & Stile sind fest gestaltet (sehen zuverlässig gut aus). Optional komplettes KI-CSS via `MDT_AI_CSS=1`.
+- 🧮 Die Aufgaben sind gemischt: reine Rechenaufgaben & Textaufgaben (höchstens eine Textaufgabe pro Tag), regelmäßig eine **„Rechne schriftlich"-Aufgabe** (mit schriftlichem Rechenweg in der Lösung) und **häufig Kommazahlen**. Jede Aufgabe hat genau ein prüfbares Endergebnis.
+- ✍️ **Antwort eintippen + aus Fehlern lernen:** Das Kind tippt sein Ergebnis ein. Bei einem Fehler kommt **erst ein Tipp und ein zweiter Versuch** – klappt es dann, zählt es weiterhin als „richtig". Erst nach dem zweiten Fehlversuch erscheint die **Lösung mit Rechenweg**. Prüfung tolerant (Komma/Punkt, Einheit egal, Brüche).
+- 🔥 **Zwei Streaks + Gnadentage (im localStorage):** „Tage am Stück" und „Tage alles richtig" (je mit Rekord). **Gnadentage** (Streak-Freeze) verhindern, dass ein einzelner verpasster Tag den Streak sofort zurücksetzt; man verdient alle 7 Tage einen dazu. Alles bleibt lokal und wird nach Reload wiederhergestellt.
 - 📅 Frühere Tage sind über ein kleines Archiv erreichbar.
 
 ## So funktioniert's
@@ -85,15 +87,42 @@ MDT_DATE=2026-12-24 npm run generate
 # Danach docs/index.html im Browser öffnen.
 ```
 
+## Mehrere Tage auf einmal ansehen (Vorschau)
+
+Rendert die nächsten Tage in einen temporären Ordner `.preview/` und startet einen
+lokalen Server mit einer Übersicht (ein Handy-Vorschaurahmen pro Tag) – ideal, um Design
+**und** Inhalt vieler Tage schnell zu prüfen:
+
+```bash
+npm run preview          # 20 Tage ab heute
+npm run preview -- 30    # 30 Tage
+MDT_PREVIEW_DAYS=10 npm run preview
+
+# Mit echten KI-Aufgaben/-Designs zusätzlich den Key setzen:
+OPENAI_API_KEY=sk-xxx npm run preview
+```
+
+Danach die angezeigte URL (Standard `http://localhost:4321/`) öffnen. `.preview/` ist
+temporär und wird nicht eingecheckt. Ohne API-Key werden Fallback-Aufgaben/Zufallsdesign genutzt.
+
 ## Anpassen
 
 - **Aufgaben-Prompt:** `buildSystemPrompt()` in `scripts/generate.mjs`.
-- **Design-Prompt (KI):** `buildDesignPrompt()` in `scripts/generate.mjs` – hier steuerst du Stil/Vorgaben des KI-Designs.
-- **Erlaubte Schriften:** `DISPLAY_FONTS` / `BODY_FONTS` (die KI wählt nur daraus → laden garantiert).
-- **Fallback-Designs erweitern:** Arrays `PALETTES`, `FONT_PAIRS`, `EMOJI_SETS`.
-- **KI-Design abschalten:** Umgebungsvariable `MDT_AI_DESIGN=0` → es wird ein zufälliges Design statt des KI-Designs genutzt.
+- **Layout/Optik:** `builtinCss()` ist das Basis-Layout, `variantCss()` enthält die Stil-Varianten (`STYLES`). `buildDesignPrompt()` steuert, welche Farbwelt/Schriften/Stile die KI täglich wählt. Neue Variante = Eintrag in `STYLES` + Block in `variantCss()`.
+- **Schrift-Auswahl:** `DISPLAY_FONTS` / `BODY_FONTS` (die KI wählt nur daraus → laden garantiert).
+- **Fallback-Optik ohne KI:** `PALETTES`, `FONT_PAIRS`, `EMOJI_SETS`.
+- **KI-Optik abschalten:** `MDT_AI_DESIGN=0` → zufällige Farben/Schriften statt KI (auch automatisch ohne API-Key).
+- **Komplettes KI-CSS aktivieren (experimentell):** `MDT_AI_CSS=1` → die KI gestaltet das ganze Stylesheet selbst (variabler, aber weniger verlässlich schön).
 - **Uhrzeit:** `cron` in `.github/workflows/daily.yml` (Zeit ist in UTC).
 - **Modell:** Repo-Variable `OPENAI_MODEL` (z. B. `gpt-4o` für höhere Qualität).
+
+## Rechtliches (Impressum & Datenschutz)
+
+- `docs/impressum.html` und `docs/datenschutz.html` werden bei jedem Build automatisch erzeugt und sind im Footer verlinkt.
+- Die Betreiberangaben stehen zentral in der Konstante `OPERATOR` in `scripts/generate.mjs` – **bitte vor dem Live-Gang prüfen/ergänzen** (v. a. USt-IdNr., ggf. Kontaktadresse).
+- Die Datenschutzerklärung deckt ab: Hosting (GitHub Pages, Server-Logs/IP, USA-Transfer), **Google Fonts** (IP an Google), **localStorage** (Lernfortschritt nur lokal, keine Tracking-Cookies, keine Analyse).
+- Hinweis: Google Fonts werden aktuell von Google-Servern geladen (datenschutzrechtlich offengelegt). Für eine strengere DSGVO-Konformität ließen sich die Schriften **selbst hosten** – sag Bescheid, dann baue ich das ein.
+- Die Texte sind sorgfältig erstellt, aber **keine Rechtsberatung**; im Zweifel anwaltlich prüfen lassen.
 
 ## Hinweise
 

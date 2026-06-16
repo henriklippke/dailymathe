@@ -5,7 +5,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "generate": "node scripts/generate.mjs"
+    "generate": "node scripts/generate.mjs",
+    "preview": "node scripts/preview.mjs"
   },
   "engines": {
     "node": ">=20"
