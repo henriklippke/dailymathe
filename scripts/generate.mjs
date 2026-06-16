@@ -699,8 +699,9 @@ function builtinCss(theme) {
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
+  html{touch-action:manipulation}
   body{
-    font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55;
+    font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55; touch-action:manipulation;
     ${bodyBg} background-attachment:fixed; position:relative;
     padding:max(20px, env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
     display:flex; justify-content:center;
@@ -923,6 +924,13 @@ ${useAiCss ? "" : `<link rel="stylesheet" href="${fontsUrl}">`}
 ${styleBlock}
 </style>
 <style>[hidden]{display:none !important}</style>
+<script>
+// iOS Safari ignoriert user-scalable=no -> Pinch-Zoom per JS unterbinden
+// (Doppeltipp-Zoom wird zusätzlich über touch-action:manipulation im CSS verhindert).
+["gesturestart","gesturechange","gestureend"].forEach(function(ev){
+  document.addEventListener(ev, function(e){ e.preventDefault(); }, { passive:false });
+});
+</script>
 </head>
 <body>
   ${bgArt}

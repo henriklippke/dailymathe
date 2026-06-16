@@ -3,25 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#f9c74f">
+<meta name="theme-color" content="#ff6f61">
 <title>Daily Mathe – Klasse 6 – 2026-06-17</title>
 <meta name="description" content="Daily Mathe für Klasse 6 – zwei frische Aufgaben, jeden Tag neu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Quicksand:wght@400;600;700&display=swap">
 <style>
 
   :root{
-    --card:#ffffff; --ink:#333333; --accent:#90be6d;
-    --accent2:#277da1; --good:#43aa8b; --radius:34px;
-    --display:"Luckiest Guy", system-ui, sans-serif;
-    --body:"Nunito", system-ui, sans-serif;
+    --card:#ffffff; --ink:#333333; --accent:#ff8c00;
+    --accent2:#ff4500; --good:#4caf50; --radius:34px;
+    --display:"Bungee", system-ui, sans-serif;
+    --body:"Quicksand", system-ui, sans-serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
+  html{touch-action:manipulation}
   body{
-    font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55;
-    background:linear-gradient(135deg, #f9c74f 30%, #f94144 70%), radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(190deg, #90be6d 40%, transparent 60%); background-attachment:fixed; position:relative;
+    font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55; touch-action:manipulation;
+    background:linear-gradient(150deg, #FF6F61 0%, #FF8C00 50%, #6FA3EF 100%), radial-gradient(circle at top left, #FF9F43, transparent 60%), linear-gradient(90deg, #FF4500, transparent 50%); background-attachment:fixed; position:relative;
     padding:max(20px, env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
     display:flex; justify-content:center;
   }
@@ -168,6 +169,13 @@
   
 </style>
 <style>[hidden]{display:none !important}</style>
+<script>
+// iOS Safari ignoriert user-scalable=no -> Pinch-Zoom per JS unterbinden
+// (Doppeltipp-Zoom wird zusätzlich über touch-action:manipulation im CSS verhindert).
+["gesturestart","gesturechange","gestureend"].forEach(function(ev){
+  document.addEventListener(ev, function(e){ e.preventDefault(); }, { passive:false });
+});
+</script>
 </head>
 <body>
   
@@ -201,9 +209,9 @@
       <div class="task__head">
         <span class="task__sticker">🐼</span>
         <span class="task__index">Aufgabe 1</span>
-        <div class="task__tags"><span class="tag">Schriftliche Multiplikation</span><span class="tag tag--mid">mittel</span></div>
+        <div class="task__tags"><span class="tag">Schriftliche Division</span><span class="tag tag--mid">mittel</span></div>
       </div>
-      <p class="task__question">Rechne schriftlich: 34,5 × 6</p>
+      <p class="task__question">Rechne schriftlich 123,45 : 3.</p>
       <form class="answer" data-idx="0">
         <input class="answer__input" id="answer-0" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
@@ -224,14 +232,13 @@
       <p class="attempt" id="attempt-0" hidden></p>
       <div class="hint" id="hint-0" hidden>
         <span class="hint__label">Tipp</span>
-        <p class="hint__text">Tipp: Multipliziere zuerst 345 mit 6 und denk dann an das Komma. </p>
+        <p class="hint__text">Tipp: Teile zuerst die 123, dann die 0, und am Ende die 45. Schreibe das Komma im Ergebnis.</p>
       </div>
       <div class="solution" id="solution-0" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">   34,5 
-×    6 
-------- 
-  207,0</p>
+        <p class="solution__text">  123,45 : 3 
+= 41,15 
+</p>
       </div>
     </article>
 
@@ -239,9 +246,9 @@
       <div class="task__head">
         <span class="task__sticker">🍪</span>
         <span class="task__index">Aufgabe 2</span>
-        <div class="task__tags"><span class="tag">Geometrie</span><span class="tag tag--easy">leicht</span></div>
+        <div class="task__tags"><span class="tag">Textaufgabe (Prozentrechnung)</span><span class="tag tag--easy">leicht</span></div>
       </div>
-      <p class="task__question">Ein Rechteck hat eine Länge von 5,4 m und eine Breite von 3,2 m. Wie groß ist die Fläche des Rechtecks in m²?</p>
+      <p class="task__question">Ein Buch kostet 20 € und wird um 10 % reduziert. Wie viel kostet das Buch nach der Reduzierung?</p>
       <form class="answer" data-idx="1">
         <input class="answer__input" id="answer-1" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
@@ -262,11 +269,13 @@
       <p class="attempt" id="attempt-1" hidden></p>
       <div class="hint" id="hint-1" hidden>
         <span class="hint__label">Tipp</span>
-        <p class="hint__text">Tipp: Multipliziere die Länge mit der Breite. Schau dir die Zahlen gut an.</p>
+        <p class="hint__text">Tipp: 10 % von 20 € sind 2 €. Zieh den Betrag von 20 € ab.</p>
       </div>
       <div class="solution" id="solution-1" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">5,4 × 3,2 = 17,28</p>
+        <p class="solution__text">10 % von 20 € = 2 € 
+20 € - 2 € = 18 € 
+</p>
       </div>
     </article>
     </main>
@@ -285,7 +294,7 @@
 (function(){
   var DAY = "2026-06-17";
   var SLUG = "klasse-6";
-  var TASKS = [{"answer":"207","accept":["207,0"]},{"answer":"17,28","accept":[]}];
+  var TASKS = [{"answer":"41,15","accept":["41,15€"]},{"answer":"18,00","accept":["18 €"]}];
   var PKEY = "mdt_progress_" + SLUG;
   var MAX_ATTEMPTS = 2;     // ein erster Versuch + ein zweiter nach dem Tipp
   var FREEZE_CAP = 3;       // max. gleichzeitig gehortete Gnadentage
