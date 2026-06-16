@@ -1,0 +1,13 @@
+{
+  "name": "daily-mathe",
+  "version": "1.0.0",
+  "description": "Mathe des Tages – jeden Tag 2 frische Aufgaben (Klasse 7) per OpenAI, mit täglich wechselndem Design.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "generate": "node scripts/generate.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#74ebd5">
+<title>Rechen-Rakete – 2026-06-16</title>
+<meta name="description" content="Mathe des Tages – zwei frische Aufgaben für Klasse 7, jeden Tag neu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Quicksand:wght@400;600;700&display=swap">
+<style>
+  :root{
+    --bg1:#74ebd5; --bg2:#9face6;
+    --card:#fbffff; --ink:#15293a; --accent:#2563eb;
+    --accent2:#06b6d4; --good:#0d9488; --radius:32px;
+    --display:"Baloo 2", system-ui, sans-serif;
+    --body:"Quicksand", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:var(--body); color:#15293a; min-height:100vh; min-height:100dvh;
+    background: repeating-conic-gradient(from 0deg at 50% 0%, rgba(255,255,255,.08) 0deg 6deg, transparent 6deg 12deg), linear-gradient(215deg, #74ebd5, #9face6); 
+    background-attachment:fixed;
+    padding:max(16px, env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom));
+    display:flex; flex-direction:column; align-items:center;
+  }
+  .wrap{width:100%; max-width:520px; margin:0 auto}
+
+  .seen-banner{
+    display:none; align-items:center; gap:8px; width:100%;
+    background:rgba(255,255,255,.92); color:#1a1a1a;
+    border-radius:999px; padding:10px 16px; margin-bottom:14px;
+    font-weight:800; font-size:.9rem; box-shadow:0 6px 18px rgba(0,0,0,.18);
+    animation:pop .4s ease;
+  }
+  .seen-banner.show{display:flex}
+  .seen-banner .dot{width:10px;height:10px;border-radius:50%;background:var(--good);box-shadow:0 0 0 4px rgba(0,0,0,.06)}
+
+  header{text-align:center; color:#fff; margin:6px 0 22px}
+  .date-pill{
+    display:inline-block; background:rgba(255,255,255,.22); backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.35); color:#fff; font-weight:700;
+    padding:6px 14px; border-radius:999px; font-size:.82rem; letter-spacing:.3px;
+  }
+  h1{
+    font-family:var(--display); font-weight:800; margin:14px 0 6px;
+    font-size:clamp(2rem, 9vw, 3rem); line-height:1.02; color:#fff;
+    text-shadow:0 4px 0 rgba(0,0,0,.12), 0 10px 26px rgba(0,0,0,.22);
+  }
+  .hype{color:#fff; opacity:.96; font-weight:700; font-size:1rem; margin:0}
+  .emoji-row{font-size:1.5rem; margin-top:12px; letter-spacing:6px}
+
+  .card{
+    background:var(--card); color:var(--ink); border-radius:var(--radius);
+    padding:20px 18px 18px; margin:0 0 18px;
+    box-shadow:0 18px 36px rgba(0,0,0,.20), 0 2px 0 rgba(0,0,0,.05);
+    transform:rotate(var(--tilt)); position:relative; overflow:hidden;
+  }
+  .card::before{
+    content:""; position:absolute; inset:0 0 auto 0; height:6px;
+    background:linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .card-num{display:flex; align-items:center; gap:10px; margin-bottom:8px}
+  .sticker{font-size:2rem; display:inline-block; filter:drop-shadow(0 3px 4px rgba(0,0,0,.2))}
+  .num{font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--accent2)}
+  .badges{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px}
+  .badge{
+    font-size:.72rem; font-weight:800; padding:4px 10px; border-radius:999px;
+    background:color-mix(in srgb, var(--accent) 14%, white); color:var(--accent);
+    text-transform:uppercase; letter-spacing:.4px;
+  }
+  .diff-easy{background:color-mix(in srgb, var(--good) 16%, white); color:var(--good)}
+  .diff-mid{background:#fff2d6; color:#b45309}
+  .diff-hard{background:#ffe0e0; color:#c0264a}
+  .question{font-size:1.18rem; line-height:1.5; font-weight:600; margin:4px 0 16px; white-space:pre-wrap}
+
+  .reveal{
+    width:100%; border:none; cursor:pointer; font-family:var(--display);
+    font-weight:700; font-size:1rem; color:#fff; padding:13px 16px; border-radius:14px;
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    box-shadow:0 8px 18px color-mix(in srgb, var(--accent) 40%, transparent);
+    transition:transform .12s ease, filter .12s ease;
+  }
+  .reveal:active{transform:scale(.97)}
+  .reveal.open{filter:saturate(.7) brightness(.95)}
+
+  .solution{
+    margin-top:14px; padding:14px 16px; border-radius:14px;
+    background:color-mix(in srgb, var(--good) 10%, white);
+    border:2px dashed color-mix(in srgb, var(--good) 45%, white);
+    animation:pop .35s ease;
+  }
+  .solution p{margin:6px 0 0; font-size:1.05rem; line-height:1.5; font-weight:600; white-space:pre-wrap}
+  .sol-tag{
+    display:inline-block; font-family:var(--display); font-weight:700; font-size:.8rem;
+    color:#fff; background:var(--good); padding:3px 10px; border-radius:999px;
+  }
+
+  .footer{text-align:center; color:#fff; margin-top:8px; font-size:.82rem; opacity:.9}
+  .footer a{color:#fff; font-weight:800}
+  .archive{margin-top:10px}
+  .archive summary{cursor:pointer; color:#fff; font-weight:800; opacity:.95}
+  .archive ul{list-style:none; padding:0; margin:10px 0 0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
+  .archive a{
+    background:rgba(255,255,255,.2); color:#fff; padding:6px 12px; border-radius:999px;
+    text-decoration:none; font-weight:700; font-size:.8rem; border:1px solid rgba(255,255,255,.3)
+  }
+
+  @keyframes pop{from{opacity:0; transform:translateY(8px) scale(.98)} to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="seen-banner" id="seenBanner">
+      <span class="dot"></span>
+      <span id="seenText">Lösungen heute schon angeschaut 👀</span>
+    </div>
+
+    <header>
+      <span class="date-pill">Dienstag, 16. Juni 2026</span>
+      <h1>Rechen-Rakete</h1>
+      <p class="hype">Dein tägliches Zahlen-Abenteuer. 🪐</p>
+      <div class="emoji-row">🐼 🍪 🛸 🎪 🧩</div>
+    </header>
+
+    <main>
+      
+    <article class="card" style="--tilt:-1deg">
+      <div class="card-num"><span class="sticker" style="transform:rotate(-7deg)">🐼</span><span class="num">Aufgabe 1</span></div>
+      <div class="badges"><span class="badge">Schriftliche Subtraktion</span><span class="badge diff-easy">leicht</span></div>
+      <p class="question">Rechne schriftlich: 3198 − 2629 = ?</p>
+      <button class="reveal" data-idx="0" aria-expanded="false">
+        <span class="reveal-label">Lösung anzeigen</span>
+      </button>
+      <div class="solution" id="sol-0" hidden>
+        <span class="sol-tag">Lösung</span>
+        <p>3198 − 2629 = 569</p>
+      </div>
+    </article>
+
+    <article class="card" style="--tilt:-1deg">
+      <div class="card-num"><span class="sticker" style="transform:rotate(11deg)">🍪</span><span class="num">Aufgabe 2</span></div>
+      <div class="badges"><span class="badge">Prozentrechnung</span><span class="badge diff-mid">mittel</span></div>
+      <p class="question">Ein Fahrrad kostet 40 €. Im Angebot gibt es 20 % Rabatt. Wie viel sparst du und was kostet das Fahrrad jetzt?</p>
+      <button class="reveal" data-idx="1" aria-expanded="false">
+        <span class="reveal-label">Lösung anzeigen</span>
+      </button>
+      <div class="solution" id="sol-1" hidden>
+        <span class="sol-tag">Lösung</span>
+        <p>Rabatt: 20 % von 40 € = 8 €. Neuer Preis: 40 € − 8 € = 32 €.</p>
+      </div>
+    </article>
+    </main>
+
+    <div class="footer">
+      <details class="archive">
+        <summary>Frühere Tage 📅</summary>
+        <ul><li style="color:#fff;opacity:.8;list-style:none">Noch kein Archiv 🐣</li></ul>
+      </details>
+      <p style="margin-top:14px">Jeden Tag neu · automatisch erstellt 🤖</p>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var DAY = "2026-06-16";
+  var KEY = "mdt_solutions_seen_" + DAY;
+  var PRAISE = "Stark gemacht! 🎉";
+
+  function setCookie(name, val, days){
+    var d = new Date();
+    d.setTime(d.getTime() + days*24*60*60*1000);
+    document.cookie = name + "=" + val + ";expires=" + d.toUTCString() + ";path=/;SameSite=Lax";
+  }
+  function getCookie(name){
+    return document.cookie.split("; ").reduce(function(acc, c){
+      var p = c.split("=");
+      return p[0] === name ? decodeURIComponent(p.slice(1).join("=")) : acc;
+    }, "");
+  }
+
+  var banner = document.getElementById("seenBanner");
+  var seenText = document.getElementById("seenText");
+
+  function markSeen(){
+    setCookie(KEY, "1", 7);
+    banner.classList.add("show");
+    seenText.textContent = "Lösungen heute schon angeschaut " + PRAISE;
+  }
+
+  // Beim Laden prüfen: hat man heute die Lösungen schon gesehen?
+  if (getCookie(KEY) === "1") {
+    banner.classList.add("show");
+    seenText.textContent = "Lösungen heute schon angeschaut " + PRAISE;
+  }
+
+  document.querySelectorAll(".reveal").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var idx = btn.getAttribute("data-idx");
+      var sol = document.getElementById("sol-" + idx);
+      var open = !sol.hidden;
+      if (open){
+        sol.hidden = true;
+        btn.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+        btn.querySelector(".reveal-label").textContent = "Lösung anzeigen";
+      } else {
+        sol.hidden = false;
+        btn.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+        btn.querySelector(".reveal-label").textContent = "Lösung verstecken";
+        markSeen();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

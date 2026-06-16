@@ -1,0 +1,61 @@
+name: Mathe des Tages
+
+on:
+  schedule:
+    # 04:10 UTC ~ 06:10 Berlin (Sommerzeit) bzw. 05:10 (Winterzeit) – jede Nacht
+    - cron: "10 4 * * *"
+  workflow_dispatch: {} # manueller Start per Button im Actions-Tab
+
+permissions:
+  contents: write # zum Committen der generierten Seite
+  pages: write # für GitHub Pages Deploy
+  id-token: write # für GitHub Pages Deploy
+
+concurrency:
+  group: daily-mathe
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Aufgaben + Seite generieren
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+        run: npm run generate
+
+      - name: Generierte Seite committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --staged --quiet; then
+            echo "Keine Änderungen."
+          else
+            git commit -m "Mathe des Tages: $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artefakt
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy auf GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
