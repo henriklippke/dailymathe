@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ff6f61">
+<meta name="theme-color" content="#ff6347">
 <title>Daily Mathe – Klasse 6 – 2026-06-16</title>
 <meta name="description" content="Daily Mathe für Klasse 6 – zwei frische Aufgaben, jeden Tag neu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,8 +12,8 @@
 <style>
 
   :root{
-    --card:#ffffff; --ink:#333333; --accent:#ff6f61;
-    --accent2:#c94c4c; --good:#4caf50; --radius:34px;
+    --card:#ffffff; --ink:#333333; --accent:#ff6347;
+    --accent2:#4682b4; --good:#32cd32; --radius:34px;
     --display:"Bungee", system-ui, sans-serif;
     --body:"Quicksand", system-ui, sans-serif;
   }
@@ -21,7 +21,7 @@
   html,body{margin:0;padding:0}
   body{
     font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55;
-    background: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(231deg, #ff9aa2, #ffb3b3); background-size: 28px 28px, 28px 28px; background-attachment:fixed; position:relative;
+    background: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(231deg, #ff7f50, #add8e6); background-size: 28px 28px, 28px 28px; background-attachment:fixed; position:relative;
     padding:max(20px, env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
     display:flex; justify-content:center;
   }
@@ -104,13 +104,25 @@
   .attempt--correct{color:var(--good)}
   .attempt--revealed{color:#e11d48}
 
-  .hint-toggle{margin-top:12px; display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+  .task__actions{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+  .chip-btn{display:inline-flex; align-items:center; gap:6px; cursor:pointer;
     font-family:var(--body); font-weight:700; font-size:.85rem; color:var(--accent2);
     background:color-mix(in srgb, var(--accent2) 10%, white);
     border:1px solid color-mix(in srgb, var(--accent2) 22%, white);
     padding:8px 14px; border-radius:999px; transition:transform .12s ease, background .12s ease}
-  .hint-toggle:hover{background:color-mix(in srgb, var(--accent2) 16%, white)}
-  .hint-toggle:active{transform:scale(.97)}
+  .chip-btn:hover{background:color-mix(in srgb, var(--accent2) 16%, white)}
+  .chip-btn:active{transform:scale(.97)}
+
+  .scratch{margin-top:12px}
+  .scratch__bar{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px}
+  .scratch__tool,.scratch__clear{cursor:pointer; font-family:var(--body); font-weight:700; font-size:.8rem;
+    color:var(--ink); background:color-mix(in srgb, var(--ink) 6%, white);
+    border:1px solid color-mix(in srgb, var(--ink) 16%, white); padding:7px 12px; border-radius:10px}
+  .scratch__tool.is-active{color:#fff; background:var(--accent2); border-color:var(--accent2)}
+  .scratch__canvas{width:100%; height:280px; display:block; border-radius:12px; cursor:crosshair;
+    touch-action:none; background-color:#fff; border:1px solid #d8dcea;
+    background-image:linear-gradient(#e9ecf5 1px, transparent 1px), linear-gradient(90deg, #e9ecf5 1px, transparent 1px);
+    background-size:26px 26px}
   .hint{margin-top:12px; padding:13px 15px; border-radius:13px;
     background:#fff7e6; border:1px solid #f4c97a}
   .hint__label{display:inline-block; font-weight:800; font-size:.66rem; text-transform:uppercase;
@@ -154,7 +166,7 @@
 <style>[hidden]{display:none !important}</style>
 </head>
 <body>
-  <div class="bg-art" aria-hidden="true"><svg preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ff9aa2;stop-opacity:1"/><stop offset="100%" style="stop-color:#ffb3b3;stop-opacity:1"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#grad1)"/><circle cx="100" cy="100" r="80" fill="#ff6f61" opacity="0.3"/><circle cx="700" cy="500" r="60" fill="#c94c4c" opacity="0.3"/><ellipse cx="400" cy="300" rx="150" ry="100" fill="#ffffff" opacity="0.2"/></svg></div>
+  <div class="bg-art" aria-hidden="true"><svg preserveAspectRatio="xMidYMid slice" viewBox='0 0 100 100'><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:#ff7f50;stop-opacity:1' /><stop offset='100%' style='stop-color:#add8e6;stop-opacity:1' /></linearGradient></defs><circle cx='20' cy='20' r='15' fill='url(#grad1)' opacity='0.6'/><circle cx='80' cy='30' r='10' fill='url(#grad1)' opacity='0.6'/><ellipse cx='60' cy='70' rx='30' ry='15' fill='url(#grad1)' opacity='0.6'/><circle cx='50' cy='20' r='12' fill='url(#grad1)' opacity='0.6'/><circle cx='15' cy='75' r='16' fill='url(#grad1)' opacity='0.6'/><circle cx='85' cy='60' r='18' fill='url(#grad1)' opacity='0.6'/></svg></div>
   <div class="app">
     <header class="app-header">
       
@@ -185,26 +197,36 @@
       <div class="task__head">
         <span class="task__sticker">🦊</span>
         <span class="task__index">Aufgabe 1</span>
-        <div class="task__tags"><span class="tag">Schriftliche Addition</span><span class="tag tag--mid">mittel</span></div>
+        <div class="task__tags"><span class="tag">Sachaufgaben/Textaufgaben</span><span class="tag tag--mid">mittel</span></div>
       </div>
-      <p class="task__question">Rechne schriftlich: 245,7 + 678,4.</p>
+      <p class="task__question">Ein Buch kostet 12,50 €. Wenn du zwei Bücher kaufst, gibt es 15 % Rabatt. Wie viel musst du insgesamt bezahlen?</p>
       <form class="answer" data-idx="0">
         <input class="answer__input" id="answer-0" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
         <button class="answer__check" type="submit" data-idx="0">Prüfen</button>
       </form>
-      <button type="button" class="hint-toggle" id="hinttoggle-0" data-idx="0">💡 Tipp anzeigen</button>
+      <div class="task__actions">
+        <button type="button" class="chip-btn hint-toggle" id="hinttoggle-0" data-idx="0">💡 Tipp anzeigen</button>
+        <button type="button" class="chip-btn scratch-toggle" id="scratchtoggle-0" data-idx="0">✏️ Zettel</button>
+      </div>
+      <div class="scratch" id="scratch-0" hidden>
+        <div class="scratch__bar">
+          <button type="button" class="scratch__tool is-active" data-idx="0" data-tool="pen">✏️ Stift</button>
+          <button type="button" class="scratch__tool" data-idx="0" data-tool="eraser">🧽 Radierer</button>
+          <button type="button" class="scratch__clear" data-idx="0">🗑️ Leeren</button>
+        </div>
+        <canvas class="scratch__canvas" id="canvas-0"></canvas>
+      </div>
       <p class="attempt" id="attempt-0" hidden></p>
       <div class="hint" id="hint-0" hidden>
         <span class="hint__label">Tipp</span>
-        <p class="hint__text">Tipp: Schreibe die Zahlen untereinander, achte auf die Kommastellen. Addiere ganz normal von rechts nach links.</p>
+        <p class="hint__text">Tipp: Berechne erst den Preis für zwei Bücher. Danach findest du 15 % von diesem Gesamtpreis.</p>
       </div>
       <div class="solution" id="solution-0" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">  245,7
-+ 678,4
---------
-  924,1</p>
+        <p class="solution__text">Preis für 2 Bücher: 2 × 12,50 € = 25,00 €
+Rabatt: 15 % von 25,00 € = 0,15 × 25,00 € = 3,75 €
+Zahlbetrag: 25,00 € - 3,75 € = 21,25 €</p>
       </div>
     </article>
 
@@ -212,23 +234,38 @@
       <div class="task__head">
         <span class="task__sticker">🍕</span>
         <span class="task__index">Aufgabe 2</span>
-        <div class="task__tags"><span class="tag">Textaufgabe (Prozentrechnung)</span><span class="tag tag--easy">leicht</span></div>
+        <div class="task__tags"><span class="tag">Schriftliche Multiplikation</span><span class="tag tag--mid">mittel</span></div>
       </div>
-      <p class="task__question">Du hast 120 €, und möchtest 25 % davon sparen. Wieviel Geld sparst du? </p>
+      <p class="task__question">Rechne schriftlich: 23,6 × 5.</p>
       <form class="answer" data-idx="1">
         <input class="answer__input" id="answer-1" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
         <button class="answer__check" type="submit" data-idx="1">Prüfen</button>
       </form>
-      <button type="button" class="hint-toggle" id="hinttoggle-1" data-idx="1">💡 Tipp anzeigen</button>
+      <div class="task__actions">
+        <button type="button" class="chip-btn hint-toggle" id="hinttoggle-1" data-idx="1">💡 Tipp anzeigen</button>
+        <button type="button" class="chip-btn scratch-toggle" id="scratchtoggle-1" data-idx="1">✏️ Zettel</button>
+      </div>
+      <div class="scratch" id="scratch-1" hidden>
+        <div class="scratch__bar">
+          <button type="button" class="scratch__tool is-active" data-idx="1" data-tool="pen">✏️ Stift</button>
+          <button type="button" class="scratch__tool" data-idx="1" data-tool="eraser">🧽 Radierer</button>
+          <button type="button" class="scratch__clear" data-idx="1">🗑️ Leeren</button>
+        </div>
+        <canvas class="scratch__canvas" id="canvas-1"></canvas>
+      </div>
       <p class="attempt" id="attempt-1" hidden></p>
       <div class="hint" id="hint-1" hidden>
         <span class="hint__label">Tipp</span>
-        <p class="hint__text">Tipp: 25 % ist ein Viertel. Teile 120 durch 4, um herauszufinden, wieviel du sparst.</p>
+        <p class="hint__text">Tipp: Schreibe 23,6 als 236 und multipliziere ganz normal mit 5. Setze das Komma am Ende wieder richtig ein.</p>
       </div>
       <div class="solution" id="solution-1" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">120 € : 4 = 30 €</p>
+        <p class="solution__text">  236
+×  5
+─────
+  1180
+Das Komma kommt nach 2 Stellen: 118,0</p>
       </div>
     </article>
     </main>
@@ -247,7 +284,7 @@
 (function(){
   var DAY = "2026-06-16";
   var SLUG = "klasse-6";
-  var TASKS = [{"answer":"924,1","accept":["924,1"]},{"answer":"30","accept":["30 €"]}];
+  var TASKS = [{"answer":"21,25 €","accept":["21.25","21,25"]},{"answer":"118,0","accept":["118","118,0"]}];
   var PKEY = "mdt_progress_" + SLUG;
   var MAX_ATTEMPTS = 2;     // ein erster Versuch + ein zweiter nach dem Tipp
   var FREEZE_CAP = 3;       // max. gleichzeitig gehortete Gnadentage
@@ -464,6 +501,89 @@
       showHint(i);
       save();
     });
+  });
+
+  // ---- Zettel zum Rechnen (Mal-Canvas, finger-/stylustauglich) ----
+  var scratch = {}; // pro Aufgabe: { ctx, tool, sized, dpr }
+  function setupCanvas(i){
+    if (scratch[i]) return;
+    var cv = document.getElementById("canvas-" + i);
+    if (!cv) return;
+    var ctx = cv.getContext("2d");
+    var st = { ctx: ctx, tool: "pen", drawing: false, lastX: 0, lastY: 0, sized: false, dpr: 1 };
+    scratch[i] = st;
+
+    // Backing-Store passend zur tatsächlichen CSS-Größe setzen (scharfe Linien, korrekte Koordinaten)
+    function sizeNow(){
+      var rect = cv.getBoundingClientRect();
+      var w = rect.width || cv.clientWidth || (cv.parentElement && cv.parentElement.clientWidth) || 0;
+      var h = rect.height || 280;
+      if (!w || w < 10) return false;
+      var dpr = window.devicePixelRatio || 1;
+      cv.width = Math.round(w * dpr);
+      cv.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.lineCap = "round"; ctx.lineJoin = "round";
+      st.dpr = dpr; st.sized = true;
+      return true;
+    }
+    st.sizeNow = sizeNow;
+    if (!sizeNow() && typeof ResizeObserver !== "undefined"){
+      var ro = new ResizeObserver(function(){ if (sizeNow()) ro.disconnect(); });
+      ro.observe(cv);
+    }
+
+    function pos(e){ var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+    function start(e){
+      if (!st.sized && !sizeNow()) return;
+      e.preventDefault(); st.drawing = true;
+      var p = pos(e); st.lastX = p.x; st.lastY = p.y;
+      try { cv.setPointerCapture(e.pointerId); } catch (err) {}
+    }
+    function move(e){
+      if (!st.drawing) return; e.preventDefault();
+      var p = pos(e);
+      ctx.globalCompositeOperation = st.tool === "eraser" ? "destination-out" : "source-over";
+      ctx.strokeStyle = "#1f2430";
+      ctx.lineWidth = st.tool === "eraser" ? 22 : 2.6;
+      ctx.beginPath(); ctx.moveTo(st.lastX, st.lastY); ctx.lineTo(p.x, p.y); ctx.stroke();
+      st.lastX = p.x; st.lastY = p.y;
+    }
+    function end(){ st.drawing = false; }
+    cv.addEventListener("pointerdown", start);
+    cv.addEventListener("pointermove", move);
+    cv.addEventListener("pointerup", end);
+    cv.addEventListener("pointercancel", end);
+    cv.addEventListener("pointerleave", end);
+  }
+  function clearCanvas(i){
+    var st = scratch[i]; var cv = document.getElementById("canvas-" + i);
+    if (!st || !cv) return;
+    st.ctx.save();
+    st.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    st.ctx.clearRect(0, 0, cv.width, cv.height);
+    st.ctx.restore();
+  }
+  document.querySelectorAll(".scratch-toggle").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var i = +btn.getAttribute("data-idx");
+      var box = document.getElementById("scratch-" + i);
+      var open = box.hidden;
+      box.hidden = !open;
+      btn.textContent = open ? "✏️ Zettel ausblenden" : "✏️ Zettel";
+      if (open) setupCanvas(i); // erst beim Öffnen initialisieren (dann hat der Canvas eine Größe)
+    });
+  });
+  document.querySelectorAll(".scratch__tool").forEach(function(b){
+    b.addEventListener("click", function(){
+      var i = +b.getAttribute("data-idx");
+      if (scratch[i]) scratch[i].tool = b.getAttribute("data-tool");
+      document.querySelectorAll('.scratch__tool[data-idx="' + i + '"]').forEach(function(x){ x.classList.remove("is-active"); });
+      b.classList.add("is-active");
+    });
+  });
+  document.querySelectorAll(".scratch__clear").forEach(function(b){
+    b.addEventListener("click", function(){ clearCanvas(+b.getAttribute("data-idx")); });
   });
 })();
 </script>

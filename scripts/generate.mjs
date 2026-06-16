@@ -651,7 +651,18 @@ function taskCard(task, idx, theme) {
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
         <button class="answer__check" type="submit" data-idx="${idx}">Prüfen</button>
       </form>
-      <button type="button" class="hint-toggle" id="hinttoggle-${idx}" data-idx="${idx}">💡 Tipp anzeigen</button>
+      <div class="task__actions">
+        <button type="button" class="chip-btn hint-toggle" id="hinttoggle-${idx}" data-idx="${idx}">💡 Tipp anzeigen</button>
+        <button type="button" class="chip-btn scratch-toggle" id="scratchtoggle-${idx}" data-idx="${idx}">✏️ Zettel</button>
+      </div>
+      <div class="scratch" id="scratch-${idx}" hidden>
+        <div class="scratch__bar">
+          <button type="button" class="scratch__tool is-active" data-idx="${idx}" data-tool="pen">✏️ Stift</button>
+          <button type="button" class="scratch__tool" data-idx="${idx}" data-tool="eraser">🧽 Radierer</button>
+          <button type="button" class="scratch__clear" data-idx="${idx}">🗑️ Leeren</button>
+        </div>
+        <canvas class="scratch__canvas" id="canvas-${idx}"></canvas>
+      </div>
       <p class="attempt" id="attempt-${idx}" hidden></p>
       <div class="hint" id="hint-${idx}" hidden>
         <span class="hint__label">Tipp</span>
@@ -773,13 +784,25 @@ function builtinCss(theme) {
   .attempt--correct{color:var(--good)}
   .attempt--revealed{color:#e11d48}
 
-  .hint-toggle{margin-top:12px; display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+  .task__actions{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+  .chip-btn{display:inline-flex; align-items:center; gap:6px; cursor:pointer;
     font-family:var(--body); font-weight:700; font-size:.85rem; color:var(--accent2);
     background:color-mix(in srgb, var(--accent2) 10%, white);
     border:1px solid color-mix(in srgb, var(--accent2) 22%, white);
     padding:8px 14px; border-radius:999px; transition:transform .12s ease, background .12s ease}
-  .hint-toggle:hover{background:color-mix(in srgb, var(--accent2) 16%, white)}
-  .hint-toggle:active{transform:scale(.97)}
+  .chip-btn:hover{background:color-mix(in srgb, var(--accent2) 16%, white)}
+  .chip-btn:active{transform:scale(.97)}
+
+  .scratch{margin-top:12px}
+  .scratch__bar{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px}
+  .scratch__tool,.scratch__clear{cursor:pointer; font-family:var(--body); font-weight:700; font-size:.8rem;
+    color:var(--ink); background:color-mix(in srgb, var(--ink) 6%, white);
+    border:1px solid color-mix(in srgb, var(--ink) 16%, white); padding:7px 12px; border-radius:10px}
+  .scratch__tool.is-active{color:#fff; background:var(--accent2); border-color:var(--accent2)}
+  .scratch__canvas{width:100%; height:280px; display:block; border-radius:12px; cursor:crosshair;
+    touch-action:none; background-color:#fff; border:1px solid #d8dcea;
+    background-image:linear-gradient(#e9ecf5 1px, transparent 1px), linear-gradient(90deg, #e9ecf5 1px, transparent 1px);
+    background-size:26px 26px}
   .hint{margin-top:12px; padding:13px 15px; border-radius:13px;
     background:#fff7e6; border:1px solid #f4c97a}
   .hint__label{display:inline-block; font-weight:800; font-size:.66rem; text-transform:uppercase;
@@ -1167,6 +1190,89 @@ ${styleBlock}
       showHint(i);
       save();
     });
+  });
+
+  // ---- Zettel zum Rechnen (Mal-Canvas, finger-/stylustauglich) ----
+  var scratch = {}; // pro Aufgabe: { ctx, tool, sized, dpr }
+  function setupCanvas(i){
+    if (scratch[i]) return;
+    var cv = document.getElementById("canvas-" + i);
+    if (!cv) return;
+    var ctx = cv.getContext("2d");
+    var st = { ctx: ctx, tool: "pen", drawing: false, lastX: 0, lastY: 0, sized: false, dpr: 1 };
+    scratch[i] = st;
+
+    // Backing-Store passend zur tatsächlichen CSS-Größe setzen (scharfe Linien, korrekte Koordinaten)
+    function sizeNow(){
+      var rect = cv.getBoundingClientRect();
+      var w = rect.width || cv.clientWidth || (cv.parentElement && cv.parentElement.clientWidth) || 0;
+      var h = rect.height || 280;
+      if (!w || w < 10) return false;
+      var dpr = window.devicePixelRatio || 1;
+      cv.width = Math.round(w * dpr);
+      cv.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.lineCap = "round"; ctx.lineJoin = "round";
+      st.dpr = dpr; st.sized = true;
+      return true;
+    }
+    st.sizeNow = sizeNow;
+    if (!sizeNow() && typeof ResizeObserver !== "undefined"){
+      var ro = new ResizeObserver(function(){ if (sizeNow()) ro.disconnect(); });
+      ro.observe(cv);
+    }
+
+    function pos(e){ var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+    function start(e){
+      if (!st.sized && !sizeNow()) return;
+      e.preventDefault(); st.drawing = true;
+      var p = pos(e); st.lastX = p.x; st.lastY = p.y;
+      try { cv.setPointerCapture(e.pointerId); } catch (err) {}
+    }
+    function move(e){
+      if (!st.drawing) return; e.preventDefault();
+      var p = pos(e);
+      ctx.globalCompositeOperation = st.tool === "eraser" ? "destination-out" : "source-over";
+      ctx.strokeStyle = "#1f2430";
+      ctx.lineWidth = st.tool === "eraser" ? 22 : 2.6;
+      ctx.beginPath(); ctx.moveTo(st.lastX, st.lastY); ctx.lineTo(p.x, p.y); ctx.stroke();
+      st.lastX = p.x; st.lastY = p.y;
+    }
+    function end(){ st.drawing = false; }
+    cv.addEventListener("pointerdown", start);
+    cv.addEventListener("pointermove", move);
+    cv.addEventListener("pointerup", end);
+    cv.addEventListener("pointercancel", end);
+    cv.addEventListener("pointerleave", end);
+  }
+  function clearCanvas(i){
+    var st = scratch[i]; var cv = document.getElementById("canvas-" + i);
+    if (!st || !cv) return;
+    st.ctx.save();
+    st.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    st.ctx.clearRect(0, 0, cv.width, cv.height);
+    st.ctx.restore();
+  }
+  document.querySelectorAll(".scratch-toggle").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var i = +btn.getAttribute("data-idx");
+      var box = document.getElementById("scratch-" + i);
+      var open = box.hidden;
+      box.hidden = !open;
+      btn.textContent = open ? "✏️ Zettel ausblenden" : "✏️ Zettel";
+      if (open) setupCanvas(i); // erst beim Öffnen initialisieren (dann hat der Canvas eine Größe)
+    });
+  });
+  document.querySelectorAll(".scratch__tool").forEach(function(b){
+    b.addEventListener("click", function(){
+      var i = +b.getAttribute("data-idx");
+      if (scratch[i]) scratch[i].tool = b.getAttribute("data-tool");
+      document.querySelectorAll('.scratch__tool[data-idx="' + i + '"]').forEach(function(x){ x.classList.remove("is-active"); });
+      b.classList.add("is-active");
+    });
+  });
+  document.querySelectorAll(".scratch__clear").forEach(function(b){
+    b.addEventListener("click", function(){ clearCanvas(+b.getAttribute("data-idx")); });
   });
 })();
 </script>
