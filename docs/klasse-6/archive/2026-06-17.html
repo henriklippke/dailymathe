@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#ff4f6d">
+<meta name="theme-color" content="#ff6b6b">
 <title>Daily Mathe – Klasse 6 – 2026-06-17</title>
 <meta name="description" content="Daily Mathe für Klasse 6 – zwei frische Aufgaben, jeden Tag neu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Quicksand:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@400;700;800&display=swap">
 <style>
 
   :root{
-    --card:#ffffff; --ink:#2e2e2e; --accent:#00bfff;
-    --accent2:#ff4f6d; --good:#28a745; --radius:34px;
+    --card:#ffffff; --ink:#1c1c1c; --accent:#f39c12;
+    --accent2:#e74c3c; --good:#2ecc71; --radius:34px;
     --display:"Luckiest Guy", system-ui, sans-serif;
-    --body:"Quicksand", system-ui, sans-serif;
+    --body:"Nunito", system-ui, sans-serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
   body{
     font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55;
-    background:linear-gradient(180deg, #FF4F6D 20%, #FF9A00 80%), radial-gradient(circle at top left, #FFEDBB, transparent 70%), linear-gradient(to right, #FF6B6B, #FFD93D 50%); background-attachment:fixed; position:relative;
+    background:linear-gradient(180deg, #ff6b6b 0%, #4a90e2 100%), radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%); background-attachment:fixed; position:relative;
     padding:max(20px, env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
     display:flex; justify-content:center;
   }
@@ -203,7 +203,7 @@
         <span class="task__index">Aufgabe 1</span>
         <div class="task__tags"><span class="tag">Dezimalzahlen</span><span class="tag tag--mid">mittel</span></div>
       </div>
-      <p class="task__question">Ein Wasserkocher hat ein Fassungsvermögen von 1,5 Litern. Du hast 0,75 Liter Wasser eingegossen. Wie viel Liter passen noch hinein, bis er voll ist?</p>
+      <p class="task__question">Ein Melonenbaum trägt 12,5 kg Melonen. Davon sind 3,8 kg untergeschnitten und 1,2 kg sind bereits geerntet. Wie viel kg Melonen bleiben noch am Baum?</p>
       <form class="answer" data-idx="0">
         <input class="answer__input" id="answer-0" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
@@ -224,11 +224,13 @@
       <p class="attempt" id="attempt-0" hidden></p>
       <div class="hint" id="hint-0" hidden>
         <span class="hint__label">Tipp</span>
-        <p class="hint__text">Tipp: Zieh die Menge, die schon drin ist, von der Gesamtmenge ab. 1,5 - 0,75 ist der Weg.</p>
+        <p class="hint__text">Tipp: Rechne zuerst, wie viel Melonen insgesamt geerntet wurden. Dann ziehst du das von 12,5 kg ab.</p>
       </div>
       <div class="solution" id="solution-0" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">1,5 - 0,75 = 0,75</p>
+        <p class="solution__text">3,8 kg + 1,2 kg = 5 kg geerntet.
+
+12,5 kg - 5 kg = 7,5 kg bleiben.</p>
       </div>
     </article>
 
@@ -238,7 +240,7 @@
         <span class="task__index">Aufgabe 2</span>
         <div class="task__tags"><span class="tag">Schriftliche Division</span><span class="tag tag--mid">mittel</span></div>
       </div>
-      <p class="task__question">Rechne schriftlich: 672 : 8</p>
+      <p class="task__question">Rechne schriftlich: 65,7 : 3.</p>
       <form class="answer" data-idx="1">
         <input class="answer__input" id="answer-1" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
@@ -259,24 +261,15 @@
       <p class="attempt" id="attempt-1" hidden></p>
       <div class="hint" id="hint-1" hidden>
         <span class="hint__label">Tipp</span>
-        <p class="hint__text">Tipp: Teile 672 in 8 große Teile auf. Wie oft passt 8 in die einzelnen Stellen?</p>
+        <p class="hint__text">Tipp: Teile zuerst die ganze Zahl 65 durch 3. Dann geh sorgfältig mit der Nachkommastelle um.</p>
       </div>
       <div class="solution" id="solution-1" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">672
----
-8 | 6 7 2
-- 64
----
-  32
- - 32
----
-   0
-  0
-   8
-  - 8
----
-   0 =&gt; 84</p>
+        <p class="solution__text">65 : 3 = 21 Rest 2.
+
+Dann 2 Nachkommastelle runterholen und 27 : 3 = 9.
+
+Ergebnis: 21,9.</p>
       </div>
     </article>
     </main>
@@ -295,7 +288,7 @@
 (function(){
   var DAY = "2026-06-17";
   var SLUG = "klasse-6";
-  var TASKS = [{"answer":"0,75","accept":[]},{"answer":"84","accept":[]}];
+  var TASKS = [{"answer":"7,5","accept":["7500 g"]},{"answer":"21,9","accept":[]}];
   var PKEY = "mdt_progress_" + SLUG;
   var MAX_ATTEMPTS = 2;     // ein erster Versuch + ein zweiter nach dem Tipp
   var FREEZE_CAP = 3;       // max. gleichzeitig gehortete Gnadentage
