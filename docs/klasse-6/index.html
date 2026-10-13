@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#2af598">
-<title>Daily Mathe – Klasse 6 – 2026-10-12</title>
+<meta name="theme-color" content="#43cea2">
+<title>Daily Mathe – Klasse 6 – 2026-10-13</title>
 <meta name="description" content="Daily Mathe für Klasse 6 – zwei frische Aufgaben, jeden Tag neu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titan+One&family=Quicksand:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap">
 <style>
 
   :root{
-    --card:#f5fbff; --ink:#06283d; --accent:#0077ff;
-    --accent2:#00c2a8; --good:#0d9488; --radius:21px;
-    --display:"Titan One", system-ui, sans-serif;
-    --body:"Quicksand", system-ui, sans-serif;
+    --card:#f3f8ff; --ink:#0b1f33; --accent:#5b6cff;
+    --accent2:#9b5bff; --good:#10b981; --radius:29px;
+    --display:"Fredoka", system-ui, sans-serif;
+    --body:"Nunito", system-ui, sans-serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
   html{touch-action:manipulation}
   body{
     font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55; touch-action:manipulation;
-    background: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(128deg, #2af598, #009efd); background-size: 28px 28px, 28px 28px; background-attachment:fixed; position:relative;
+    background: repeating-conic-gradient(from 0deg at 50% 0%, rgba(255,255,255,.08) 0deg 6deg, transparent 6deg 12deg), linear-gradient(165deg, #43cea2, #185a9d);  background-attachment:fixed; position:relative;
     padding:max(20px, env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
     display:flex; justify-content:center;
   }
@@ -151,6 +151,17 @@
 
   @media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
   
+  .emoji-row{display:flex}
+  .task__head{gap:8px}
+  .task__sticker{display:inline-block; font-size:1.5rem; filter:drop-shadow(0 3px 3px rgba(0,0,0,.18))}
+  .app-title{font-size:clamp(2.3rem,10vw,3.2rem)}
+  .task{border-radius:30px; box-shadow:0 22px 46px rgba(12,17,40,.26)}
+  .task:nth-of-type(odd){transform:rotate(-1deg)}
+  .task:nth-of-type(even){transform:rotate(1deg)}
+  .task::before{height:8px}
+  .tag,.kicker__date,.kicker__class{border-radius:999px}
+  .answer__input,.answer__check{border-radius:999px}
+  .streak{border-radius:22px}
   
 </style>
 <style>[hidden]{display:none !important}</style>
@@ -168,11 +179,11 @@
     <header class="app-header">
       
       <div class="kicker">
-        <span class="kicker__date">Montag, 12. Oktober 2026</span>
+        <span class="kicker__date">Dienstag, 13. Oktober 2026</span>
         <span class="kicker__class">Klasse 6</span>
       </div>
       <h1 class="app-title">Daily Mathe</h1>
-      <div class="emoji-row">🧮 ✏️ 🚀 ⭐ 🎯</div>
+      <div class="emoji-row">🐲 🍉 🏆 🎮 🔥</div>
       <div class="streaks">
         <div class="streak streak--days" id="streak-done">
           <span class="streak__num">0</span>
@@ -192,11 +203,11 @@
       
     <article class="task">
       <div class="task__head">
-        <span class="task__sticker">🧮</span>
+        <span class="task__sticker">🐲</span>
         <span class="task__index">Aufgabe 1</span>
         <div class="task__tags"><span class="tag">Schriftliche Subtraktion</span><span class="tag tag--easy">leicht</span></div>
       </div>
-      <p class="task__question">Rechne schriftlich: 3200 − 1701 = ?</p>
+      <p class="task__question">Rechne schriftlich: 1821 − 1421 = ?</p>
       <form class="answer" data-idx="0">
         <input class="answer__input" id="answer-0" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
@@ -221,13 +232,13 @@
       </div>
       <div class="solution" id="solution-0" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">3200 − 1701 = 1499</p>
+        <p class="solution__text">1821 − 1421 = 400</p>
       </div>
     </article>
 
     <article class="task">
       <div class="task__head">
-        <span class="task__sticker">✏️</span>
+        <span class="task__sticker">🍉</span>
         <span class="task__index">Aufgabe 2</span>
         <div class="task__tags"><span class="tag">Einfache Prozentrechnung</span><span class="tag tag--mid">mittel</span></div>
       </div>
@@ -264,7 +275,7 @@
     <footer class="app-footer">
       <details class="archive">
         <summary class="archive__summary">Frühere Tage</summary>
-        <ul class="archive__list"><li><a href="archive/2026-10-11.html">2026-10-11</a></li><li><a href="archive/2026-10-10.html">2026-10-10</a></li><li><a href="archive/2026-10-09.html">2026-10-09</a></li><li><a href="archive/2026-10-08.html">2026-10-08</a></li><li><a href="archive/2026-10-07.html">2026-10-07</a></li><li><a href="archive/2026-10-06.html">2026-10-06</a></li><li><a href="archive/2026-10-05.html">2026-10-05</a></li><li><a href="archive/2026-10-04.html">2026-10-04</a></li><li><a href="archive/2026-10-03.html">2026-10-03</a></li><li><a href="archive/2026-10-02.html">2026-10-02</a></li><li><a href="archive/2026-10-01.html">2026-10-01</a></li><li><a href="archive/2026-09-30.html">2026-09-30</a></li><li><a href="archive/2026-09-29.html">2026-09-29</a></li><li><a href="archive/2026-09-28.html">2026-09-28</a></li></ul>
+        <ul class="archive__list"><li><a href="archive/2026-10-12.html">2026-10-12</a></li><li><a href="archive/2026-10-11.html">2026-10-11</a></li><li><a href="archive/2026-10-10.html">2026-10-10</a></li><li><a href="archive/2026-10-09.html">2026-10-09</a></li><li><a href="archive/2026-10-08.html">2026-10-08</a></li><li><a href="archive/2026-10-07.html">2026-10-07</a></li><li><a href="archive/2026-10-06.html">2026-10-06</a></li><li><a href="archive/2026-10-05.html">2026-10-05</a></li><li><a href="archive/2026-10-04.html">2026-10-04</a></li><li><a href="archive/2026-10-03.html">2026-10-03</a></li><li><a href="archive/2026-10-02.html">2026-10-02</a></li><li><a href="archive/2026-10-01.html">2026-10-01</a></li><li><a href="archive/2026-09-30.html">2026-09-30</a></li><li><a href="archive/2026-09-29.html">2026-09-29</a></li></ul>
       </details>
       <p class="app-credit">Jeden Tag neu · automatisch erstellt 🤖</p>
       <p class="legal-links"><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></p>
@@ -273,9 +284,9 @@
 
 <script>
 (function(){
-  var DAY = "2026-10-12";
+  var DAY = "2026-10-13";
   var SLUG = "klasse-6";
-  var TASKS = [{"answer":"1499","accept":[]},{"answer":"54 €","accept":["54","54€"]}];
+  var TASKS = [{"answer":"400","accept":[]},{"answer":"54 €","accept":["54","54€"]}];
   var PKEY = "mdt_progress_" + SLUG;
   var MAX_ATTEMPTS = 2;     // ein erster Versuch + ein zweiter nach dem Tipp
   var FREEZE_CAP = 3;       // max. gleichzeitig gehortete Gnadentage
