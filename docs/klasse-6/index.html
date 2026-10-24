@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#ff9a9e">
-<title>Daily Mathe – Klasse 6 – 2026-10-23</title>
+<meta name="theme-color" content="#74ebd5">
+<title>Daily Mathe – Klasse 6 – 2026-10-24</title>
 <meta name="description" content="Daily Mathe für Klasse 6 – zwei frische Aufgaben, jeden Tag neu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Nunito:wght@400;700;800&display=swap">
 <style>
 
   :root{
-    --card:#fffdfa; --ink:#3a2a4d; --accent:#ff4d8d;
-    --accent2:#7b2ff7; --good:#16a34a; --radius:22px;
-    --display:"Luckiest Guy", system-ui, sans-serif;
+    --card:#fbffff; --ink:#15293a; --accent:#2563eb;
+    --accent2:#06b6d4; --good:#0d9488; --radius:20px;
+    --display:"Paytone One", system-ui, sans-serif;
     --body:"Nunito", system-ui, sans-serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -22,7 +22,7 @@
   html{touch-action:manipulation}
   body{
     font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55; touch-action:manipulation;
-    background: linear-gradient(117deg, #ff9a9e, #fecfef); background-attachment:fixed; position:relative;
+    background: linear-gradient(221deg, #74ebd5, #9face6); background-attachment:fixed; position:relative;
     padding:max(20px, env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
     display:flex; justify-content:center;
   }
@@ -151,17 +151,17 @@
 
   @media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
   
-  .app-title{font-weight:700; font-size:clamp(1.8rem,6.5vw,2.4rem); letter-spacing:-.3px; text-shadow:none}
-  .app-tagline{opacity:.85}
-  .kicker__date,.kicker__class{box-shadow:none}
-  .streak{background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.2); box-shadow:none; backdrop-filter:none}
-  .streak__num{font-size:1.7rem}
-  .tasks{gap:14px}
-  .task{border-radius:16px; box-shadow:0 8px 24px rgba(12,17,40,.12);
-    border:1px solid color-mix(in srgb, var(--ink) 8%, white); border-top:3px solid color-mix(in srgb, var(--accent) 75%, white)}
+  .app-title{font-weight:800; letter-spacing:-1px}
+  .task{border-radius:14px; box-shadow:0 14px 34px rgba(12,17,40,.18)}
   .task::before{display:none}
-  .tag{background:transparent; border:1px solid color-mix(in srgb, var(--ink) 18%, white); color:color-mix(in srgb, var(--ink) 70%, white)}
-  .answer__check{border-radius:10px; box-shadow:none}
+  .task__head{border-bottom:1px solid color-mix(in srgb, var(--ink) 12%, white); padding-bottom:10px; margin-bottom:14px}
+  .task__index{letter-spacing:2px}
+  .task__question{font-size:1.22rem}
+  .tag{background:transparent; border:1px solid color-mix(in srgb, var(--ink) 22%, white);
+    color:color-mix(in srgb, var(--ink) 75%, white); border-radius:4px; letter-spacing:.5px}
+  .answer__input,.answer__check{border-radius:7px}
+  .streak{border-radius:10px}
+  .solution{border-left:4px solid var(--good)}
   
 </style>
 <style>[hidden]{display:none !important}</style>
@@ -179,7 +179,7 @@
     <header class="app-header">
       
       <div class="kicker">
-        <span class="kicker__date">Freitag, 23. Oktober 2026</span>
+        <span class="kicker__date">Samstag, 24. Oktober 2026</span>
         <span class="kicker__class">Klasse 6</span>
       </div>
       <h1 class="app-title">Daily Mathe</h1>
@@ -207,7 +207,7 @@
         <span class="task__index">Aufgabe 1</span>
         <div class="task__tags"><span class="tag">Schriftliche Subtraktion</span><span class="tag tag--easy">leicht</span></div>
       </div>
-      <p class="task__question">Rechne schriftlich: 6436 − 3095 = ?</p>
+      <p class="task__question">Rechne schriftlich: 5730 − 2210 = ?</p>
       <form class="answer" data-idx="0">
         <input class="answer__input" id="answer-0" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
@@ -232,7 +232,7 @@
       </div>
       <div class="solution" id="solution-0" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">6436 − 3095 = 3341</p>
+        <p class="solution__text">5730 − 2210 = 3520</p>
       </div>
     </article>
 
@@ -242,7 +242,7 @@
         <span class="task__index">Aufgabe 2</span>
         <div class="task__tags"><span class="tag">Einfache Prozentrechnung</span><span class="tag tag--mid">mittel</span></div>
       </div>
-      <p class="task__question">Ein Spiel kostet 80 €. Es gibt 10 % Rabatt. Was kostet es jetzt?</p>
+      <p class="task__question">Ein Spiel kostet 40 €. Es gibt 10 % Rabatt. Was kostet es jetzt?</p>
       <form class="answer" data-idx="1">
         <input class="answer__input" id="answer-1" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
@@ -263,11 +263,11 @@
       <p class="attempt" id="attempt-1" hidden></p>
       <div class="hint" id="hint-1" hidden>
         <span class="hint__label">Tipp</span>
-        <p class="hint__text">Tipp: Rechne erst aus, wie viel 10 % von 80 € sind (der Rabatt), und ziehe diesen Betrag dann vom Preis ab.</p>
+        <p class="hint__text">Tipp: Rechne erst aus, wie viel 10 % von 40 € sind (der Rabatt), und ziehe diesen Betrag dann vom Preis ab.</p>
       </div>
       <div class="solution" id="solution-1" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">Rabatt: 10 % von 80 € = 8 €. Neuer Preis: 80 € − 8 € = 72 €.</p>
+        <p class="solution__text">Rabatt: 10 % von 40 € = 4 €. Neuer Preis: 40 € − 4 € = 36 €.</p>
       </div>
     </article>
     </main>
@@ -275,7 +275,7 @@
     <footer class="app-footer">
       <details class="archive">
         <summary class="archive__summary">Frühere Tage</summary>
-        <ul class="archive__list"><li><a href="archive/2026-10-22.html">2026-10-22</a></li><li><a href="archive/2026-10-21.html">2026-10-21</a></li><li><a href="archive/2026-10-20.html">2026-10-20</a></li><li><a href="archive/2026-10-19.html">2026-10-19</a></li><li><a href="archive/2026-10-18.html">2026-10-18</a></li><li><a href="archive/2026-10-17.html">2026-10-17</a></li><li><a href="archive/2026-10-16.html">2026-10-16</a></li><li><a href="archive/2026-10-15.html">2026-10-15</a></li><li><a href="archive/2026-10-14.html">2026-10-14</a></li><li><a href="archive/2026-10-13.html">2026-10-13</a></li><li><a href="archive/2026-10-12.html">2026-10-12</a></li><li><a href="archive/2026-10-11.html">2026-10-11</a></li><li><a href="archive/2026-10-10.html">2026-10-10</a></li><li><a href="archive/2026-10-09.html">2026-10-09</a></li></ul>
+        <ul class="archive__list"><li><a href="archive/2026-10-23.html">2026-10-23</a></li><li><a href="archive/2026-10-22.html">2026-10-22</a></li><li><a href="archive/2026-10-21.html">2026-10-21</a></li><li><a href="archive/2026-10-20.html">2026-10-20</a></li><li><a href="archive/2026-10-19.html">2026-10-19</a></li><li><a href="archive/2026-10-18.html">2026-10-18</a></li><li><a href="archive/2026-10-17.html">2026-10-17</a></li><li><a href="archive/2026-10-16.html">2026-10-16</a></li><li><a href="archive/2026-10-15.html">2026-10-15</a></li><li><a href="archive/2026-10-14.html">2026-10-14</a></li><li><a href="archive/2026-10-13.html">2026-10-13</a></li><li><a href="archive/2026-10-12.html">2026-10-12</a></li><li><a href="archive/2026-10-11.html">2026-10-11</a></li><li><a href="archive/2026-10-10.html">2026-10-10</a></li></ul>
       </details>
       <p class="app-credit">Jeden Tag neu · automatisch erstellt 🤖</p>
       <p class="legal-links"><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></p>
@@ -284,9 +284,9 @@
 
 <script>
 (function(){
-  var DAY = "2026-10-23";
+  var DAY = "2026-10-24";
   var SLUG = "klasse-6";
-  var TASKS = [{"answer":"3341","accept":[]},{"answer":"72 €","accept":["72","72€"]}];
+  var TASKS = [{"answer":"3520","accept":[]},{"answer":"36 €","accept":["36","36€"]}];
   var PKEY = "mdt_progress_" + SLUG;
   var MAX_ATTEMPTS = 2;     // ein erster Versuch + ein zweiter nach dem Tipp
   var FREEZE_CAP = 3;       // max. gleichzeitig gehortete Gnadentage
