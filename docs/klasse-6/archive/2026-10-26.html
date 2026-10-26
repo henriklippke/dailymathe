@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#a8ff78">
+<title>Daily Mathe – Klasse 6 – 2026-10-26</title>
+<meta name="description" content="Daily Mathe für Klasse 6 – zwei frische Aufgaben, jeden Tag neu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;800&display=swap">
+<style>
+
+  :root{
+    --card:#fbfffb; --ink:#123018; --accent:#22a358;
+    --accent2:#0ea5e9; --good:#16a34a; --radius:22px;
+    --display:"Chewy", system-ui, sans-serif;
+    --body:"Nunito", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  html{touch-action:manipulation}
+  body{
+    font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55; touch-action:manipulation;
+    background: linear-gradient(183deg, #a8ff78, #78ffd6); background-attachment:fixed; position:relative;
+    padding:max(20px, env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
+    display:flex; justify-content:center;
+  }
+  body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(60% 50% at 12% -5%, rgba(255,255,255,.16), transparent 70%),
+      radial-gradient(55% 45% at 105% 105%, rgba(0,0,0,.14), transparent 70%);}
+  .bg-art{position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none}
+  .bg-art svg{width:100%; height:100%; display:block}
+  .app{width:100%; max-width:540px; position:relative; z-index:1}
+
+  .grade-switch{display:flex; gap:8px; justify-content:center; margin-bottom:18px}
+  .grade-link{background:rgba(255,255,255,.16); color:#fff; padding:8px 16px; border-radius:12px;
+    text-decoration:none; font-weight:700; font-size:.85rem; border:1px solid rgba(255,255,255,.28);
+    backdrop-filter:blur(6px)}
+  .grade-link.is-active{background:#fff; color:var(--accent2)}
+
+  .app-header{text-align:center; margin:4px 0 24px}
+  .kicker{display:inline-flex; gap:8px; justify-content:center; align-items:center; flex-wrap:wrap; margin-bottom:16px}
+  .kicker__date,.kicker__class{font-size:.76rem; font-weight:800; padding:7px 14px; border-radius:999px}
+  .kicker__date{background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.3); color:#fff; backdrop-filter:blur(6px)}
+  .kicker__class{background:#fff; color:var(--accent2); box-shadow:0 4px 14px rgba(0,0,0,.12)}
+  .app-title{font-family:var(--display); font-weight:800; margin:0 0 8px;
+    font-size:clamp(2.1rem,9vw,3rem); line-height:1.04; color:#fff; letter-spacing:-.5px;
+    text-shadow:0 2px 0 rgba(0,0,0,.08), 0 14px 30px rgba(0,0,0,.22)}
+  .app-tagline{margin:0; color:#fff; opacity:.94; font-weight:600; font-size:1.02rem}
+
+  .streaks{display:flex; gap:12px; justify-content:center; margin-top:20px}
+  .streaks.bump .streak{animation:streakPop .55s ease}
+  .streak{flex:1; max-width:170px; display:flex; flex-direction:column; align-items:center; gap:3px;
+    background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); color:#fff;
+    padding:14px 12px; border-radius:18px; backdrop-filter:blur(8px); box-shadow:0 10px 26px rgba(0,0,0,.16)}
+  .streak__num{font-family:var(--display); font-weight:800; font-size:2rem; line-height:1; display:flex; align-items:center; gap:6px}
+  .streak__num::before{font-size:1.3rem}
+  .streak--days .streak__num::before{content:"🔥"}
+  .streak--perfect .streak__num::before{content:"✅"}
+  .streak__label{font-size:.72rem; font-weight:700; opacity:.95; text-align:center}
+  .streak__best{font-size:.64rem; opacity:.75; margin-top:1px}
+  .freezes{margin:10px 0 0; font-size:.78rem; font-weight:700; color:#fff; opacity:.92; text-align:center}
+  @keyframes streakPop{0%{transform:scale(1)}45%{transform:scale(1.16)}100%{transform:scale(1)}}
+
+  .tasks{display:grid; gap:18px}
+  .task{position:relative; overflow:hidden; background:var(--card); color:var(--ink);
+    border-radius:var(--radius); padding:22px 20px 20px;
+    box-shadow:0 18px 40px rgba(12,17,40,.22); border:1px solid rgba(255,255,255,.6)}
+  .task::before{content:""; position:absolute; inset:0 0 auto 0; height:6px;
+    background:linear-gradient(90deg, var(--accent), var(--accent2))}
+  .task__head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:14px}
+  .task__index{font-family:var(--display); font-weight:800; font-size:.82rem; color:var(--accent2);
+    letter-spacing:.6px; text-transform:uppercase}
+  .task__tags{display:flex; flex-wrap:wrap; gap:6px; justify-content:flex-end}
+  .tag{font-size:.7rem; font-weight:800; padding:5px 11px; border-radius:999px;
+    background:color-mix(in srgb, var(--accent) 14%, white); color:var(--accent)}
+  .tag--easy{background:color-mix(in srgb, var(--good) 18%, white); color:var(--good)}
+  .tag--mid{background:#fff1d6; color:#b45309}
+  .tag--hard{background:#ffe0e6; color:#be123c}
+  .task__question{font-size:1.18rem; font-weight:600; margin:0 0 16px; white-space:pre-wrap; line-height:1.5}
+
+  .answer{display:flex; gap:10px; margin-top:4px; flex-wrap:wrap}
+  .answer__input{flex:1; min-width:140px; font-family:var(--body); font-weight:700; font-size:1.08rem;
+    color:var(--ink); padding:13px 15px; border-radius:13px;
+    border:2px solid color-mix(in srgb, var(--ink) 16%, white);
+    background:color-mix(in srgb, var(--ink) 4%, white); transition:border-color .15s, box-shadow .15s}
+  .answer__input::placeholder{color:color-mix(in srgb, var(--ink) 45%, white)}
+  .answer__input:focus{outline:none; border-color:var(--accent);
+    box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent)}
+  .answer__input.is-correct{border-color:var(--good); background:color-mix(in srgb, var(--good) 12%, white)}
+  .answer__input.is-wrong{border-color:#e11d48; background:#fff0f3}
+  .answer__check{flex:0 0 auto; min-height:50px; border:0; cursor:pointer; font-family:var(--display);
+    font-weight:700; font-size:1rem; color:#fff; padding:13px 22px; border-radius:13px;
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    box-shadow:0 10px 22px color-mix(in srgb, var(--accent) 38%, transparent);
+    transition:transform .12s ease, filter .12s ease}
+  .answer__check:active{transform:scale(.97)}
+  .answer__check:disabled{filter:grayscale(.5) brightness(.95); cursor:default; box-shadow:none}
+
+  .attempt{margin:14px 0 0; font-family:var(--display); font-weight:800; font-size:1.1rem;
+    display:flex; align-items:center; gap:8px}
+  .attempt--retry{color:#b45309}
+  .attempt--correct{color:var(--good)}
+  .attempt--revealed{color:#e11d48}
+
+  .task__actions{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+  .chip-btn{display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+    font-family:var(--body); font-weight:700; font-size:.85rem; color:var(--accent2);
+    background:color-mix(in srgb, var(--accent2) 10%, white);
+    border:1px solid color-mix(in srgb, var(--accent2) 22%, white);
+    padding:8px 14px; border-radius:999px; transition:transform .12s ease, background .12s ease}
+  .chip-btn:hover{background:color-mix(in srgb, var(--accent2) 16%, white)}
+  .chip-btn:active{transform:scale(.97)}
+
+  .scratch{margin-top:12px}
+  .scratch__bar{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px}
+  .scratch__tool,.scratch__clear{cursor:pointer; font-family:var(--body); font-weight:700; font-size:.8rem;
+    color:var(--ink); background:color-mix(in srgb, var(--ink) 6%, white);
+    border:1px solid color-mix(in srgb, var(--ink) 16%, white); padding:7px 12px; border-radius:10px}
+  .scratch__tool.is-active{color:#fff; background:var(--accent2); border-color:var(--accent2)}
+  .scratch__canvas{width:100%; height:280px; display:block; border-radius:12px; cursor:crosshair;
+    touch-action:none; background-color:#fff; border:1px solid #d8dcea;
+    background-image:linear-gradient(#e9ecf5 1px, transparent 1px), linear-gradient(90deg, #e9ecf5 1px, transparent 1px);
+    background-size:26px 26px}
+  .hint{margin-top:12px; padding:13px 15px; border-radius:13px;
+    background:#fff7e6; border:1px solid #f4c97a}
+  .hint__label{display:inline-block; font-weight:800; font-size:.66rem; text-transform:uppercase;
+    letter-spacing:.6px; color:#fff; background:#f59e0b; padding:4px 11px; border-radius:999px}
+  .hint__text{margin:8px 0 0; font-size:1rem; font-weight:600; white-space:pre-wrap; color:#7a4a06}
+
+  .solution{margin-top:14px; padding:15px 16px; border-radius:14px;
+    background:color-mix(in srgb, var(--good) 12%, white);
+    border:1px solid color-mix(in srgb, var(--good) 30%, white)}
+  .solution__label{display:inline-block; font-weight:800; font-size:.68rem; text-transform:uppercase;
+    letter-spacing:.6px; color:#fff; background:var(--good); padding:4px 11px; border-radius:999px}
+  .solution__text{margin:9px 0 0; font-size:1.04rem; font-weight:600; white-space:pre-wrap; color:#11331f}
+
+  .app-footer{text-align:center; color:#fff; margin-top:26px; font-size:.82rem}
+  .archive__summary{cursor:pointer; font-weight:700; opacity:.92}
+  .archive__list{list-style:none; padding:0; margin:14px 0 0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
+  .archive__link{background:rgba(255,255,255,.16); color:#fff; padding:7px 13px; border-radius:999px;
+    text-decoration:none; font-weight:700; font-size:.78rem; border:1px solid rgba(255,255,255,.26)}
+  .app-credit{margin-top:16px; opacity:.84}
+  .legal-links{margin:8px 0 0; opacity:.82}
+  .legal-links a{color:#fff; text-decoration:underline; font-weight:700}
+
+  .emoji-row{display:none; gap:6px; justify-content:center; margin-top:12px; font-size:1.5rem; letter-spacing:4px}
+  .task__sticker{display:none}
+
+  @media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
+  
+  .emoji-row{display:flex}
+  .task__head{gap:8px}
+  .task__sticker{display:inline-block; font-size:1.5rem; filter:drop-shadow(0 3px 3px rgba(0,0,0,.18))}
+  .app-title{font-size:clamp(2.3rem,10vw,3.2rem)}
+  .task{border-radius:30px; box-shadow:0 22px 46px rgba(12,17,40,.26)}
+  .task:nth-of-type(odd){transform:rotate(-1deg)}
+  .task:nth-of-type(even){transform:rotate(1deg)}
+  .task::before{height:8px}
+  .tag,.kicker__date,.kicker__class{border-radius:999px}
+  .answer__input,.answer__check{border-radius:999px}
+  .streak{border-radius:22px}
+  
+</style>
+<style>[hidden]{display:none !important}</style>
+<script>
+// iOS Safari ignoriert user-scalable=no -> Pinch-Zoom per JS unterbinden
+// (Doppeltipp-Zoom wird zusätzlich über touch-action:manipulation im CSS verhindert).
+["gesturestart","gesturechange","gestureend"].forEach(function(ev){
+  document.addEventListener(ev, function(e){ e.preventDefault(); }, { passive:false });
+});
+</script>
+</head>
+<body>
+  
+  <div class="app">
+    <header class="app-header">
+      
+      <div class="kicker">
+        <span class="kicker__date">Montag, 26. Oktober 2026</span>
+        <span class="kicker__class">Klasse 6</span>
+      </div>
+      <h1 class="app-title">Daily Mathe</h1>
+      <div class="emoji-row">🦊 🍕 🌈 🎲 🧠</div>
+      <div class="streaks">
+        <div class="streak streak--days" id="streak-done">
+          <span class="streak__num">0</span>
+          <span class="streak__label">Tage am Stück</span>
+          <span class="streak__best"></span>
+        </div>
+        <div class="streak streak--perfect" id="streak-perfect">
+          <span class="streak__num">0</span>
+          <span class="streak__label">Tage alles richtig</span>
+          <span class="streak__best"></span>
+        </div>
+      </div>
+      <p class="freezes" id="freezes" hidden></p>
+    </header>
+
+    <main class="tasks">
+      
+    <article class="task">
+      <div class="task__head">
+        <span class="task__sticker">🦊</span>
+        <span class="task__index">Aufgabe 1</span>
+        <div class="task__tags"><span class="tag">Schriftliche Subtraktion</span><span class="tag tag--easy">leicht</span></div>
+      </div>
+      <p class="task__question">Rechne schriftlich: 6646 − 2165 = ?</p>
+      <form class="answer" data-idx="0">
+        <input class="answer__input" id="answer-0" type="text" inputmode="text"
+          autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
+        <button class="answer__check" type="submit" data-idx="0">Prüfen</button>
+      </form>
+      <div class="task__actions">
+        <button type="button" class="chip-btn hint-toggle" id="hinttoggle-0" data-idx="0">💡 Tipp anzeigen</button>
+        <button type="button" class="chip-btn scratch-toggle" id="scratchtoggle-0" data-idx="0">✏️ Zettel</button>
+      </div>
+      <div class="scratch" id="scratch-0" hidden>
+        <div class="scratch__bar">
+          <button type="button" class="scratch__tool is-active" data-idx="0" data-tool="pen">✏️ Stift</button>
+          <button type="button" class="scratch__tool" data-idx="0" data-tool="eraser">🧽 Radierer</button>
+          <button type="button" class="scratch__clear" data-idx="0">🗑️ Leeren</button>
+        </div>
+        <canvas class="scratch__canvas" id="canvas-0"></canvas>
+      </div>
+      <p class="attempt" id="attempt-0" hidden></p>
+      <div class="hint" id="hint-0" hidden>
+        <span class="hint__label">Tipp</span>
+        <p class="hint__text">Tipp: Schreibe die Zahlen genau untereinander (Einer unter Einer) und rechne von rechts nach links. Wenn oben zu wenig steht, borg dir 1 von der Nachbarzahl links.</p>
+      </div>
+      <div class="solution" id="solution-0" hidden>
+        <span class="solution__label">Lösung</span>
+        <p class="solution__text">6646 − 2165 = 4481</p>
+      </div>
+    </article>
+
+    <article class="task">
+      <div class="task__head">
+        <span class="task__sticker">🍕</span>
+        <span class="task__index">Aufgabe 2</span>
+        <div class="task__tags"><span class="tag">Einfache Prozentrechnung</span><span class="tag tag--mid">mittel</span></div>
+      </div>
+      <p class="task__question">Ein Spiel kostet 120 €. Es gibt 10 % Rabatt. Was kostet es jetzt?</p>
+      <form class="answer" data-idx="1">
+        <input class="answer__input" id="answer-1" type="text" inputmode="text"
+          autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
+        <button class="answer__check" type="submit" data-idx="1">Prüfen</button>
+      </form>
+      <div class="task__actions">
+        <button type="button" class="chip-btn hint-toggle" id="hinttoggle-1" data-idx="1">💡 Tipp anzeigen</button>
+        <button type="button" class="chip-btn scratch-toggle" id="scratchtoggle-1" data-idx="1">✏️ Zettel</button>
+      </div>
+      <div class="scratch" id="scratch-1" hidden>
+        <div class="scratch__bar">
+          <button type="button" class="scratch__tool is-active" data-idx="1" data-tool="pen">✏️ Stift</button>
+          <button type="button" class="scratch__tool" data-idx="1" data-tool="eraser">🧽 Radierer</button>
+          <button type="button" class="scratch__clear" data-idx="1">🗑️ Leeren</button>
+        </div>
+        <canvas class="scratch__canvas" id="canvas-1"></canvas>
+      </div>
+      <p class="attempt" id="attempt-1" hidden></p>
+      <div class="hint" id="hint-1" hidden>
+        <span class="hint__label">Tipp</span>
+        <p class="hint__text">Tipp: Rechne erst aus, wie viel 10 % von 120 € sind (der Rabatt), und ziehe diesen Betrag dann vom Preis ab.</p>
+      </div>
+      <div class="solution" id="solution-1" hidden>
+        <span class="solution__label">Lösung</span>
+        <p class="solution__text">Rabatt: 10 % von 120 € = 12 €. Neuer Preis: 120 € − 12 € = 108 €.</p>
+      </div>
+    </article>
+    </main>
+
+    <footer class="app-footer">
+      <details class="archive">
+        <summary class="archive__summary">Frühere Tage</summary>
+        <ul class="archive__list"><li><a href="archive/2026-10-25.html">2026-10-25</a></li><li><a href="archive/2026-10-24.html">2026-10-24</a></li><li><a href="archive/2026-10-23.html">2026-10-23</a></li><li><a href="archive/2026-10-22.html">2026-10-22</a></li><li><a href="archive/2026-10-21.html">2026-10-21</a></li><li><a href="archive/2026-10-20.html">2026-10-20</a></li><li><a href="archive/2026-10-19.html">2026-10-19</a></li><li><a href="archive/2026-10-18.html">2026-10-18</a></li><li><a href="archive/2026-10-17.html">2026-10-17</a></li><li><a href="archive/2026-10-16.html">2026-10-16</a></li><li><a href="archive/2026-10-15.html">2026-10-15</a></li><li><a href="archive/2026-10-14.html">2026-10-14</a></li><li><a href="archive/2026-10-13.html">2026-10-13</a></li><li><a href="archive/2026-10-12.html">2026-10-12</a></li></ul>
+      </details>
+      <p class="app-credit">Jeden Tag neu · automatisch erstellt 🤖</p>
+      <p class="legal-links"><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></p>
+    </footer>
+  </div>
+
+<script>
+(function(){
+  var DAY = "2026-10-26";
+  var SLUG = "klasse-6";
+  var TASKS = [{"answer":"4481","accept":[]},{"answer":"108 €","accept":["108","108€"]}];
+  var PKEY = "mdt_progress_" + SLUG;
+  var MAX_ATTEMPTS = 2;     // ein erster Versuch + ein zweiter nach dem Tipp
+  var FREEZE_CAP = 3;       // max. gleichzeitig gehortete Gnadentage
+  var FREEZE_START = 2;     // Gnadentage zu Beginn
+  var FREEZE_EVERY = 7;     // alle 7 Tage am Stück gibt es einen Gnadentag dazu
+
+  // ---- Speicher (localStorage) ----
+  function load(){ try { return JSON.parse(localStorage.getItem(PKEY)) || {}; } catch(e){ return {}; } }
+  function save(){ try { localStorage.setItem(PKEY, JSON.stringify(store)); } catch(e){} }
+  function prevDay(iso){ var d = new Date(iso + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - 1); return d.toISOString().slice(0,10); }
+  function dayDiff(a, b){ return Math.round((new Date(b + "T12:00:00Z") - new Date(a + "T12:00:00Z")) / 864e5); }
+
+  var store = load();
+  store.days = store.days || {};
+  if (store.freezes == null) store.freezes = FREEZE_START;
+  // alte Tage (älter als ~120) ausdünnen, damit der Speicher klein bleibt
+  var keep = {}; var minDay = prevDay(DAY);
+  for (var k = 0; k < 120; k++) minDay = prevDay(minDay);
+  Object.keys(store.days).forEach(function(d){ if (d >= minDay) keep[d] = store.days[d]; });
+  store.days = keep;
+  // Tages-Status: pro Aufgabe { status:"open|solved|revealed", attempts, input }
+  var today = store.days[DAY];
+  if (!today || !today.t) { today = { t: TASKS.map(function(){ return { status:"open", attempts:0, input:"" }; }), counted:false }; }
+  store.days[DAY] = today;
+
+  // ---- Antwort-Prüfung (tolerant) ----
+  function normStr(s){ return ("" + s).toLowerCase().replace(/\s+/g, "").replace(/,/g, "."); }
+  function toNum(s){
+    var raw = ("" + s).toLowerCase().replace(/,/g, ".").trim();
+    var mix = raw.match(/^(-?\d+)\s+(\d+)\/(\d+)$/); // gemischte Zahl "1 5/12"
+    if (mix){ var w = parseFloat(mix[1]); var sg = w < 0 ? -1 : 1; return w + sg * parseFloat(mix[2]) / parseFloat(mix[3]); }
+    var t = raw.replace(/\s+/g, "");
+    var fr = t.match(/-?\d+(?:\.\d+)?\/-?\d+(?:\.\d+)?/);
+    if (fr){ var p = fr[0].split("/"); return parseFloat(p[0]) / parseFloat(p[1]); }
+    var n = t.match(/-?\d+(?:\.\d+)?/);
+    return n ? parseFloat(n[0]) : NaN;
+  }
+  function matches(input, task){
+    var cands = [task.answer].concat(task.accept || []);
+    for (var i = 0; i < cands.length; i++){
+      var c = cands[i];
+      if (normStr(input) === normStr(c)) return true;
+      var a = toNum(input), b = toNum(c);
+      if (!isNaN(a) && !isNaN(b) && Math.abs(a - b) < 1e-6) return true;
+    }
+    return false;
+  }
+
+  // ---- Streaks + Gnadentage anzeigen ----
+  // Lebt der Streak (gestern erledigt) ODER lässt er sich noch mit Gnadentagen retten?
+  function savable(lastDate){
+    if (!lastDate) return false;
+    if (lastDate === DAY) return true;
+    var missed = dayDiff(lastDate, DAY) - 1;
+    if (missed <= 0) return true;
+    return (store.freezes || 0) >= missed;
+  }
+  function setStreak(id, val, best){
+    var el = document.getElementById(id); if (!el) return;
+    el.querySelector(".streak__num").textContent = val;
+    var b = el.querySelector(".streak__best");
+    if (b) b.textContent = best ? ("Rekord: " + best) : "";
+  }
+  function renderStreaks(){
+    setStreak("streak-done", savable(store.lastDoneDate) ? (store.doneStreak || 0) : 0, store.doneBest || 0);
+    setStreak("streak-perfect", savable(store.lastPerfectDate) ? (store.perfectStreak || 0) : 0, store.perfectBest || 0);
+    var fz = document.getElementById("freezes");
+    if (fz){
+      var n = store.freezes || 0;
+      fz.hidden = false;
+      fz.textContent = "❄️ " + n + " " + (n === 1 ? "Gnadentag" : "Gnadentage") + " übrig";
+    }
+  }
+
+  // ---- Darstellung pro Aufgabe ----
+  function setAttempt(i, kind, text){
+    var el = document.getElementById("attempt-" + i); if (!el) return;
+    el.hidden = false;
+    el.className = "attempt attempt--" + kind;
+    el.textContent = text;
+  }
+  function lockTask(i){
+    var inp = document.getElementById("answer-" + i);
+    var btn = document.querySelector('.answer__check[data-idx="' + i + '"]');
+    if (inp) inp.disabled = true;
+    if (btn) btn.disabled = true;
+  }
+  function showSolution(i){ var s = document.getElementById("solution-" + i); if (s) s.hidden = false; }
+  function hideHintToggle(i){ var t = document.getElementById("hinttoggle-" + i); if (t) t.hidden = true; }
+  function showHint(i){
+    var h = document.getElementById("hint-" + i); if (h) h.hidden = false;
+    hideHintToggle(i);
+  }
+
+  // Stellt den gespeicherten Zustand einer Aufgabe wieder her bzw. zeigt das Ergebnis.
+  function renderTask(i){
+    var st = today.t[i];
+    var inp = document.getElementById("answer-" + i);
+    var btn = document.querySelector('.answer__check[data-idx="' + i + '"]');
+    if (inp) inp.value = st.input || "";
+    if (st.hintShown) showHint(i);
+    if (st.status === "solved"){
+      if (inp) inp.classList.add("is-correct");
+      setAttempt(i, "correct", st.attempts > 1 ? "Richtig – im zweiten Versuch! 💪" : "Richtig! 🎉");
+      showSolution(i); lockTask(i); hideHintToggle(i);
+    } else if (st.status === "revealed"){
+      if (inp) inp.classList.add("is-wrong");
+      setAttempt(i, "revealed", "Schau dir den Lösungsweg an – beim nächsten Mal klappt's! 🌱");
+      showSolution(i); lockTask(i); hideHintToggle(i);
+    } else if (st.attempts === 1){
+      // erster Versuch war falsch, zweiter steht noch aus
+      if (inp){ inp.classList.add("is-wrong"); }
+      setAttempt(i, "retry", "Noch nicht ganz – schau dir den Tipp an und versuch's nochmal. 💪");
+      showHint(i); st.hintShown = true;
+      if (btn) btn.textContent = "Nochmal prüfen";
+    }
+  }
+
+  // ---- Tag abschließen (Streaks + Gnadentage), wenn alle Aufgaben fertig sind ----
+  function tasksAllResolved(){ return today.t.every(function(s){ return s.status === "solved" || s.status === "revealed"; }); }
+  function tasksAllPerfect(){ return today.t.every(function(s){ return s.status === "solved"; }); }
+
+  function completeDayIfReady(){
+    if (today.counted || !tasksAllResolved()) return;
+    today.counted = true;
+
+    var prevDone = store.lastDoneDate;
+    var prevPerfectDate = store.lastPerfectDate;
+    // Lücke prüfen und ggf. mit Gnadentagen überbrücken
+    var gapForgiven = true, used = 0;
+    if (prevDone){
+      var missed = dayDiff(prevDone, DAY) - 1;
+      if (missed > 0){
+        if ((store.freezes || 0) >= missed){ used = missed; gapForgiven = true; }
+        else gapForgiven = false;
+      }
+    }
+    store.freezes = Math.max(0, (store.freezes || 0) - used);
+
+    // "Tage am Stück"
+    store.doneStreak = gapForgiven ? (store.doneStreak || 0) + 1 : 1;
+    store.lastDoneDate = DAY;
+    store.doneBest = Math.max(store.doneBest || 0, store.doneStreak);
+
+    // "Tage alles richtig" – 2. Versuch zählt; nur ein aufgedeckter Tag bricht ihn
+    if (tasksAllPerfect()){
+      var perfectChain = gapForgiven && prevPerfectDate === prevDone; // Vortag war auch perfekt
+      store.perfectStreak = perfectChain ? (store.perfectStreak || 0) + 1 : 1;
+      store.lastPerfectDate = DAY;
+      store.perfectBest = Math.max(store.perfectBest || 0, store.perfectStreak);
+    } else {
+      store.perfectStreak = 0;
+    }
+
+    // Gnadentag verdienen (alle 7 Tage am Stück), gedeckelt
+    if (store.doneStreak % FREEZE_EVERY === 0) store.freezes = Math.min(FREEZE_CAP, (store.freezes || 0) + 1);
+
+    save();
+    renderStreaks();
+    var bar = document.querySelector(".streaks"); if (bar) bar.classList.add("bump");
+  }
+
+  // ---- Eine Antwort verarbeiten (Tipp + zweiter Versuch) ----
+  function submitAnswer(i, value){
+    var st = today.t[i];
+    if (st.status !== "open") return;
+    st.input = value;
+    st.attempts += 1;
+    var correct = matches(value, TASKS[i]);
+
+    if (correct){
+      st.status = "solved";
+      var inp = document.getElementById("answer-" + i);
+      if (inp) inp.classList.remove("is-wrong");
+      renderTask(i);
+    } else if (st.attempts < MAX_ATTEMPTS){
+      // erster Fehlversuch -> Tipp + zweiter Versuch, noch KEIN Tagesabschluss
+      var inp2 = document.getElementById("answer-" + i);
+      if (inp2){ inp2.classList.add("is-wrong"); inp2.focus(); inp2.select && inp2.select(); }
+      setAttempt(i, "retry", "Noch nicht ganz – schau dir den Tipp an und versuch's nochmal. 💪");
+      showHint(i); st.hintShown = true;
+      var btn = document.querySelector('.answer__check[data-idx="' + i + '"]');
+      if (btn) btn.textContent = "Nochmal prüfen";
+    } else {
+      // zweiter Fehlversuch -> Lösung zeigen
+      st.status = "revealed";
+      renderTask(i);
+    }
+    save();
+    completeDayIfReady();
+  }
+
+  // ---- Heutigen Stand wiederherstellen ----
+  TASKS.forEach(function(t, i){ renderTask(i); });
+  renderStreaks();
+
+  // ---- Formulare verdrahten ----
+  document.querySelectorAll(".answer").forEach(function(form){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var i = +form.getAttribute("data-idx");
+      var inp = document.getElementById("answer-" + i);
+      var val = (inp.value || "").trim();
+      if (!val){ inp.focus(); return; }
+      submitAnswer(i, val);
+    });
+  });
+
+  // ---- "Tipp anzeigen" freiwillig (kostet den Streak nicht) ----
+  document.querySelectorAll(".hint-toggle").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var i = +btn.getAttribute("data-idx");
+      today.t[i].hintShown = true;
+      showHint(i);
+      save();
+    });
+  });
+
+  // ---- Zettel zum Rechnen (Mal-Canvas, finger-/stylustauglich) ----
+  var scratch = {}; // pro Aufgabe: { ctx, tool, sized, dpr }
+  function setupCanvas(i){
+    if (scratch[i]) return;
+    var cv = document.getElementById("canvas-" + i);
+    if (!cv) return;
+    var ctx = cv.getContext("2d");
+    var st = { ctx: ctx, tool: "pen", drawing: false, lastX: 0, lastY: 0, sized: false, dpr: 1 };
+    scratch[i] = st;
+
+    // Backing-Store passend zur tatsächlichen CSS-Größe setzen (scharfe Linien, korrekte Koordinaten)
+    function sizeNow(){
+      var rect = cv.getBoundingClientRect();
+      var w = rect.width || cv.clientWidth || (cv.parentElement && cv.parentElement.clientWidth) || 0;
+      var h = rect.height || 280;
+      if (!w || w < 10) return false;
+      var dpr = window.devicePixelRatio || 1;
+      cv.width = Math.round(w * dpr);
+      cv.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.lineCap = "round"; ctx.lineJoin = "round";
+      st.dpr = dpr; st.sized = true;
+      return true;
+    }
+    st.sizeNow = sizeNow;
+    if (!sizeNow() && typeof ResizeObserver !== "undefined"){
+      var ro = new ResizeObserver(function(){ if (sizeNow()) ro.disconnect(); });
+      ro.observe(cv);
+    }
+
+    function pos(e){ var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+    function start(e){
+      if (!st.sized && !sizeNow()) return;
+      e.preventDefault(); st.drawing = true;
+      var p = pos(e); st.lastX = p.x; st.lastY = p.y;
+      try { cv.setPointerCapture(e.pointerId); } catch (err) {}
+    }
+    function move(e){
+      if (!st.drawing) return; e.preventDefault();
+      var p = pos(e);
+      ctx.globalCompositeOperation = st.tool === "eraser" ? "destination-out" : "source-over";
+      ctx.strokeStyle = "#1f2430";
+      ctx.lineWidth = st.tool === "eraser" ? 22 : 2.6;
+      ctx.beginPath(); ctx.moveTo(st.lastX, st.lastY); ctx.lineTo(p.x, p.y); ctx.stroke();
+      st.lastX = p.x; st.lastY = p.y;
+    }
+    function end(){ st.drawing = false; }
+    cv.addEventListener("pointerdown", start);
+    cv.addEventListener("pointermove", move);
+    cv.addEventListener("pointerup", end);
+    cv.addEventListener("pointercancel", end);
+    cv.addEventListener("pointerleave", end);
+  }
+  function clearCanvas(i){
+    var st = scratch[i]; var cv = document.getElementById("canvas-" + i);
+    if (!st || !cv) return;
+    st.ctx.save();
+    st.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    st.ctx.clearRect(0, 0, cv.width, cv.height);
+    st.ctx.restore();
+  }
+  document.querySelectorAll(".scratch-toggle").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var i = +btn.getAttribute("data-idx");
+      var box = document.getElementById("scratch-" + i);
+      var open = box.hidden;
+      box.hidden = !open;
+      btn.textContent = open ? "✏️ Zettel ausblenden" : "✏️ Zettel";
+      if (open) setupCanvas(i); // erst beim Öffnen initialisieren (dann hat der Canvas eine Größe)
+    });
+  });
+  document.querySelectorAll(".scratch__tool").forEach(function(b){
+    b.addEventListener("click", function(){
+      var i = +b.getAttribute("data-idx");
+      if (scratch[i]) scratch[i].tool = b.getAttribute("data-tool");
+      document.querySelectorAll('.scratch__tool[data-idx="' + i + '"]').forEach(function(x){ x.classList.remove("is-active"); });
+      b.classList.add("is-active");
+    });
+  });
+  document.querySelectorAll(".scratch__clear").forEach(function(b){
+    b.addEventListener("click", function(){ clearCanvas(+b.getAttribute("data-idx")); });
+  });
+})();
+</script>
+</body>
+</html>
