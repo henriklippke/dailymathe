@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#f7971e">
-<title>Daily Mathe – Klasse 6 – 2026-10-30</title>
+<meta name="theme-color" content="#cc2b5e">
+<title>Daily Mathe – Klasse 6 – 2026-10-31</title>
 <meta name="description" content="Daily Mathe für Klasse 6 – zwei frische Aufgaben, jeden Tag neu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,8 +12,8 @@
 <style>
 
   :root{
-    --card:#fffef5; --ink:#3a2600; --accent:#f97316;
-    --accent2:#e11d48; --good:#15803d; --radius:22px;
+    --card:#fff7fb; --ink:#2a0a26; --accent:#c026d3;
+    --accent2:#7c3aed; --good:#15803d; --radius:20px;
     --display:"Baloo 2", system-ui, sans-serif;
     --body:"Quicksand", system-ui, sans-serif;
   }
@@ -22,7 +22,7 @@
   html{touch-action:manipulation}
   body{
     font-family:var(--body); color:#fff; min-height:100vh; min-height:100dvh; line-height:1.55; touch-action:manipulation;
-    background: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(212deg, #f7971e, #ffd200); background-size: 28px 28px, 28px 28px; background-attachment:fixed; position:relative;
+    background: radial-gradient(rgba(255,255,255,.18) 2px, transparent 2px), linear-gradient(172deg, #cc2b5e, #753a88); background-size: 22px 22px; background-attachment:fixed; position:relative;
     padding:max(20px, env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
     display:flex; justify-content:center;
   }
@@ -151,17 +151,21 @@
 
   @media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
   
-  .app-title{font-weight:700; font-size:clamp(1.8rem,6.5vw,2.4rem); letter-spacing:-.3px; text-shadow:none}
-  .app-tagline{opacity:.85}
-  .kicker__date,.kicker__class{box-shadow:none}
-  .streak{background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.2); box-shadow:none; backdrop-filter:none}
-  .streak__num{font-size:1.7rem}
-  .tasks{gap:14px}
-  .task{border-radius:16px; box-shadow:0 8px 24px rgba(12,17,40,.12);
-    border:1px solid color-mix(in srgb, var(--ink) 8%, white); border-top:3px solid color-mix(in srgb, var(--accent) 75%, white)}
+  .app-title{text-transform:uppercase; text-shadow:3px 3px 0 rgba(0,0,0,.28)}
+  .kicker__date{background:#fff; color:#111; border:2px solid #111; box-shadow:3px 3px 0 var(--accent2); backdrop-filter:none}
+  .kicker__class{border:2px solid #111; box-shadow:3px 3px 0 var(--accent)}
+  .streak{background:#fff; color:#111; border:2px solid #111; border-radius:14px; box-shadow:5px 5px 0 var(--accent2); backdrop-filter:none}
+  .streak__best{opacity:.85}
+  .task{border:2.5px solid #111; border-radius:14px; box-shadow:7px 7px 0 var(--accent2)}
   .task::before{display:none}
-  .tag{background:transparent; border:1px solid color-mix(in srgb, var(--ink) 18%, white); color:color-mix(in srgb, var(--ink) 70%, white)}
-  .answer__check{border-radius:10px; box-shadow:none}
+  .task__index{color:#111}
+  .tag{border:2px solid #111; border-radius:6px; background:#fff; color:#111}
+  .tag--easy,.tag--mid,.tag--hard{color:#111}
+  .answer__input{border:2.5px solid #111; border-radius:8px; background:#fff}
+  .answer__check{border:2.5px solid #111; border-radius:8px; box-shadow:4px 4px 0 #111}
+  .answer__check:active{transform:translate(2px,2px); box-shadow:2px 2px 0 #111}
+  .solution{border:2px solid #111; border-radius:8px}
+  .grade-link,.archive__link{border:2px solid #ffffff66}
   
 </style>
 <style>[hidden]{display:none !important}</style>
@@ -179,7 +183,7 @@
     <header class="app-header">
       
       <div class="kicker">
-        <span class="kicker__date">Freitag, 30. Oktober 2026</span>
+        <span class="kicker__date">Samstag, 31. Oktober 2026</span>
         <span class="kicker__class">Klasse 6</span>
       </div>
       <h1 class="app-title">Daily Mathe</h1>
@@ -207,7 +211,7 @@
         <span class="task__index">Aufgabe 1</span>
         <div class="task__tags"><span class="tag">Schriftliche Subtraktion</span><span class="tag tag--easy">leicht</span></div>
       </div>
-      <p class="task__question">Rechne schriftlich: 4334 − 4073 = ?</p>
+      <p class="task__question">Rechne schriftlich: 3281 − 2610 = ?</p>
       <form class="answer" data-idx="0">
         <input class="answer__input" id="answer-0" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
@@ -232,7 +236,7 @@
       </div>
       <div class="solution" id="solution-0" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">4334 − 4073 = 261</p>
+        <p class="solution__text">3281 − 2610 = 671</p>
       </div>
     </article>
 
@@ -242,7 +246,7 @@
         <span class="task__index">Aufgabe 2</span>
         <div class="task__tags"><span class="tag">Einfache Prozentrechnung</span><span class="tag tag--mid">mittel</span></div>
       </div>
-      <p class="task__question">Ein Spiel kostet 60 €. Es gibt 25 % Rabatt. Was kostet es jetzt?</p>
+      <p class="task__question">Ein Spiel kostet 120 €. Es gibt 10 % Rabatt. Was kostet es jetzt?</p>
       <form class="answer" data-idx="1">
         <input class="answer__input" id="answer-1" type="text" inputmode="text"
           autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …">
@@ -263,11 +267,11 @@
       <p class="attempt" id="attempt-1" hidden></p>
       <div class="hint" id="hint-1" hidden>
         <span class="hint__label">Tipp</span>
-        <p class="hint__text">Tipp: Rechne erst aus, wie viel 25 % von 60 € sind (der Rabatt), und ziehe diesen Betrag dann vom Preis ab.</p>
+        <p class="hint__text">Tipp: Rechne erst aus, wie viel 10 % von 120 € sind (der Rabatt), und ziehe diesen Betrag dann vom Preis ab.</p>
       </div>
       <div class="solution" id="solution-1" hidden>
         <span class="solution__label">Lösung</span>
-        <p class="solution__text">Rabatt: 25 % von 60 € = 15 €. Neuer Preis: 60 € − 15 € = 45 €.</p>
+        <p class="solution__text">Rabatt: 10 % von 120 € = 12 €. Neuer Preis: 120 € − 12 € = 108 €.</p>
       </div>
     </article>
     </main>
@@ -275,7 +279,7 @@
     <footer class="app-footer">
       <details class="archive">
         <summary class="archive__summary">Frühere Tage</summary>
-        <ul class="archive__list"><li><a href="archive/2026-10-29.html">2026-10-29</a></li><li><a href="archive/2026-10-28.html">2026-10-28</a></li><li><a href="archive/2026-10-27.html">2026-10-27</a></li><li><a href="archive/2026-10-26.html">2026-10-26</a></li><li><a href="archive/2026-10-25.html">2026-10-25</a></li><li><a href="archive/2026-10-24.html">2026-10-24</a></li><li><a href="archive/2026-10-23.html">2026-10-23</a></li><li><a href="archive/2026-10-22.html">2026-10-22</a></li><li><a href="archive/2026-10-21.html">2026-10-21</a></li><li><a href="archive/2026-10-20.html">2026-10-20</a></li><li><a href="archive/2026-10-19.html">2026-10-19</a></li><li><a href="archive/2026-10-18.html">2026-10-18</a></li><li><a href="archive/2026-10-17.html">2026-10-17</a></li><li><a href="archive/2026-10-16.html">2026-10-16</a></li></ul>
+        <ul class="archive__list"><li><a href="archive/2026-10-30.html">2026-10-30</a></li><li><a href="archive/2026-10-29.html">2026-10-29</a></li><li><a href="archive/2026-10-28.html">2026-10-28</a></li><li><a href="archive/2026-10-27.html">2026-10-27</a></li><li><a href="archive/2026-10-26.html">2026-10-26</a></li><li><a href="archive/2026-10-25.html">2026-10-25</a></li><li><a href="archive/2026-10-24.html">2026-10-24</a></li><li><a href="archive/2026-10-23.html">2026-10-23</a></li><li><a href="archive/2026-10-22.html">2026-10-22</a></li><li><a href="archive/2026-10-21.html">2026-10-21</a></li><li><a href="archive/2026-10-20.html">2026-10-20</a></li><li><a href="archive/2026-10-19.html">2026-10-19</a></li><li><a href="archive/2026-10-18.html">2026-10-18</a></li><li><a href="archive/2026-10-17.html">2026-10-17</a></li></ul>
       </details>
       <p class="app-credit">Jeden Tag neu · automatisch erstellt 🤖</p>
       <p class="legal-links"><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></p>
@@ -284,9 +288,9 @@
 
 <script>
 (function(){
-  var DAY = "2026-10-30";
+  var DAY = "2026-10-31";
   var SLUG = "klasse-6";
-  var TASKS = [{"answer":"261","accept":[]},{"answer":"45 €","accept":["45","45€"]}];
+  var TASKS = [{"answer":"671","accept":[]},{"answer":"108 €","accept":["108","108€"]}];
   var PKEY = "mdt_progress_" + SLUG;
   var MAX_ATTEMPTS = 2;     // ein erster Versuch + ein zweiter nach dem Tipp
   var FREEZE_CAP = 3;       // max. gleichzeitig gehortete Gnadentage
